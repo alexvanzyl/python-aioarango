@@ -158,8 +158,8 @@ async def empty_collection(collection):
     """Empty all the documents in the collection.
 
     :param collection: Collection name
-    :type collection: aioarango.collection.StandardCollection |
-        aioarango.collection.VertexCollection | aioarango.collection.EdgeCollection
+    :type collection: python_aioarango.collection.StandardCollection |
+        python_aioarango.collection.VertexCollection | python_aioarango.collection.EdgeCollection
     """
     async for doc_id in (await collection.ids()):
         await collection.delete(doc_id, sync=True)
