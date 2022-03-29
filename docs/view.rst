@@ -1,7 +1,7 @@
 Views and ArangoSearch
 ----------------------
 
-aioarango supports **view** management. For more information on view
+python_aioarango supports **view** management. For more information on view
 properties, refer to `ArangoDB manual`_.
 
 .. _ArangoDB manual: https://docs.arangodb.com
@@ -10,7 +10,7 @@ properties, refer to `ArangoDB manual`_.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -56,13 +56,13 @@ properties, refer to `ArangoDB manual`_.
     await db.delete_view('bar')
 
 
-aioarango also supports **ArangoSearch** views.
+python_aioarango also supports **ArangoSearch** views.
 
 **Example:**
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

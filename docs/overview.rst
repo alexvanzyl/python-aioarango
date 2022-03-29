@@ -1,11 +1,11 @@
 Getting Started
 ---------------
 
-Here is an example showing how **aioarango** client can be used:
+Here is an example showing how **python_aioarango** client can be used:
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient(hosts='http://localhost:8529')

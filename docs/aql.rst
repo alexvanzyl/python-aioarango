@@ -19,7 +19,7 @@ AQL queries are invoked from AQL API wrapper. Executing queries returns
 
 .. testcode::
 
-    from aioarango import ArangoClient, AQLQueryKillError
+    from python_aioarango import ArangoClient, AQLQueryKillError
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -90,7 +90,7 @@ AQL functionality. They are somewhat similar to SQL procedures.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -127,7 +127,7 @@ are not.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

@@ -7,7 +7,7 @@ Here is an example of using ArangoDB's **simply queries**:
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -47,19 +47,19 @@ Here is an example of using ArangoDB's **simply queries**:
 
 Here are all simple query (and other utility) methods available:
 
-* :func:`aioarango.collection.Collection.all`
-* :func:`aioarango.collection.Collection.export`
-* :func:`aioarango.collection.Collection.find`
-* :func:`aioarango.collection.Collection.find_near`
-* :func:`aioarango.collection.Collection.find_in_range`
-* :func:`aioarango.collection.Collection.find_in_radius`
-* :func:`aioarango.collection.Collection.find_in_box`
-* :func:`aioarango.collection.Collection.find_by_text`
-* :func:`aioarango.collection.Collection.get_many`
-* :func:`aioarango.collection.Collection.ids`
-* :func:`aioarango.collection.Collection.keys`
-* :func:`aioarango.collection.Collection.random`
-* :func:`aioarango.collection.StandardCollection.update_match`
-* :func:`aioarango.collection.StandardCollection.replace_match`
-* :func:`aioarango.collection.StandardCollection.delete_match`
-* :func:`aioarango.collection.StandardCollection.import_bulk`
+* :func:`python_aioarango.collection.Collection.all`
+* :func:`python_aioarango.collection.Collection.export`
+* :func:`python_aioarango.collection.Collection.find`
+* :func:`python_aioarango.collection.Collection.find_near`
+* :func:`python_aioarango.collection.Collection.find_in_range`
+* :func:`python_aioarango.collection.Collection.find_in_radius`
+* :func:`python_aioarango.collection.Collection.find_in_box`
+* :func:`python_aioarango.collection.Collection.find_by_text`
+* :func:`python_aioarango.collection.Collection.get_many`
+* :func:`python_aioarango.collection.Collection.ids`
+* :func:`python_aioarango.collection.Collection.keys`
+* :func:`python_aioarango.collection.Collection.random`
+* :func:`python_aioarango.collection.StandardCollection.update_match`
+* :func:`python_aioarango.collection.StandardCollection.replace_match`
+* :func:`python_aioarango.collection.StandardCollection.delete_match`
+* :func:`python_aioarango.collection.StandardCollection.import_bulk`

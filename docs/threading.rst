@@ -1,7 +1,7 @@
 Multithreading
 --------------
 
-There are a few things you should consider before using aioarango in a
+There are a few things you should consider before using python_aioarango in a
 multithreaded (or multiprocess) architecture.
 
 Stateful Objects

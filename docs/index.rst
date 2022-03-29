@@ -2,10 +2,10 @@
 
 |
 
-aioarango
+python_aioarango
 -------------
 
-Welcome to the documentation for **aioarango**, an asynchronous Python driver for ArangoDB_.
+Welcome to the documentation for **python_aioarango**, an asynchronous Python driver for ArangoDB_.
 
 This project is forked from python-arango_. The only change is support
 for asynchronous API including tests. The current version (1.0.0) fully
@@ -22,7 +22,7 @@ Installation
 
 .. code-block:: bash
 
-    ~$ pip install aioarango
+    ~$ pip install python_aioarango
 
 Contents
 ========

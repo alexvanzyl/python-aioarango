@@ -13,7 +13,7 @@ on fields ``_from`` and ``_to``. For more information on indexes, refer to
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

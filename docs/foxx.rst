@@ -1,7 +1,7 @@
 Foxx
 ----
 
-aioarango provides support for **Foxx**, a microservice framework which
+python_aioarango provides support for **Foxx**, a microservice framework which
 lets you define custom HTTP endpoints to extend ArangoDB's REST API. For more
 information, refer to `ArangoDB manual`_.
 
@@ -11,7 +11,7 @@ information, refer to `ArangoDB manual`_.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -95,7 +95,7 @@ You can also manage Foxx services by using zip or Javascript files directly:
 
 .. code-block:: python
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

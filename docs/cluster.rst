@@ -1,7 +1,7 @@
 Clusters
 --------
 
-aioarango provides APIs for working with ArangoDB clusters. For more
+python_aioarango provides APIs for working with ArangoDB clusters. For more
 information on the design and architecture, refer to `ArangoDB manual`_.
 
 .. _ArangoDB manual: https://docs.arangodb.com
@@ -16,7 +16,7 @@ host strings or a comma-separated string during client initialization.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Single host
     client = ArangoClient(hosts='http://localhost:8529')
@@ -43,7 +43,7 @@ There are two load-balancing strategies available: "roundrobin" and "random"
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     hosts = ['http://host1:8529', 'http://host2:8529']
 
@@ -56,11 +56,11 @@ There are two load-balancing strategies available: "roundrobin" and "random"
 Administration
 ==============
 
-Below is an example on how to manage clusters using aioarango.
+Below is an example on how to manage clusters using python_aioarango.
 
 .. code-block:: python
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

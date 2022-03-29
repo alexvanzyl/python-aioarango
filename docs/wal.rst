@@ -10,7 +10,7 @@ WAL operations can only be performed by admin users via ``_system`` database.
 
 .. code-block:: python
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

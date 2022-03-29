@@ -3,7 +3,7 @@ Collections
 
 A **collection** contains :doc:`documents <document>`. It is uniquely identified
 by its name which must consist only of hyphen, underscore and alphanumeric
-characters. There are three types of collections in aioarango:
+characters. There are three types of collections in python_aioarango:
 
 * **Standard Collection:** contains regular documents.
 * **Vertex Collection:** contains vertex documents for graphs. See
@@ -15,7 +15,7 @@ Here is an example showing how you can manage standard collections:
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

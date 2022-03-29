@@ -9,7 +9,7 @@ results can be retrieved later from :ref:`BatchJob` objects.
 
 .. code-block:: python
 
-    from aioarango import ArangoClient, AQLQueryExecuteError
+    from python_aioarango import ArangoClient, AQLQueryExecuteError
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

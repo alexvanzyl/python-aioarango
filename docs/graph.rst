@@ -13,7 +13,7 @@ For more information, refer to `ArangoDB manual`_.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -67,7 +67,7 @@ Here is an example showing how edge definitions are managed:
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -122,7 +122,7 @@ additional safeguards:
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -220,7 +220,7 @@ wrappers provides additional safeguards:
 
 .. testcode:: edge_collections
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -275,7 +275,7 @@ IDs instead of keys where applicable.
 
 .. testcode:: edge_collections
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -318,7 +318,7 @@ See :ref:`Graph` and :ref:`EdgeCollection` for API specification.
 Graph Traversals
 ================
 
-**Graph traversals** are executed via the :func:`aioarango.graph.Graph.traverse`
+**Graph traversals** are executed via the :func:`python_aioarango.graph.Graph.traverse`
 method. Each traversal can span across multiple vertex collections, and walk
 over edges and vertices using various algorithms.
 
@@ -342,7 +342,7 @@ over edges and vertices using various algorithms.
 
 .. testcode:: traversals
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -380,4 +380,4 @@ over edges and vertices using various algorithms.
         vertex_uniqueness='global',
     )
 
-See :func:`aioarango.graph.Graph.traverse` for API specification.
+See :func:`python_aioarango.graph.Graph.traverse` for API specification.

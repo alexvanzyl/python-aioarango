@@ -1,18 +1,18 @@
 Authentication
 --------------
 
-aioarango supports two HTTP authentication methods: basic and JSON Web
+python_aioarango supports two HTTP authentication methods: basic and JSON Web
 Tokens (JWT).
 
 Basic Authentication
 ====================
 
-This is aioarango's default authentication method.
+This is python_aioarango's default authentication method.
 
 **Example:**
 
 .. testcode::
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -31,7 +31,7 @@ This is aioarango's default authentication method.
 JSON Web Tokens (JWT)
 =====================
 
-aioarango automatically obtains JSON web tokens from the server using
+python_aioarango automatically obtains JSON web tokens from the server using
 username and password. It also refreshes expired tokens and retries requests.
 The client and server clocks must be synchronized for the automatic refresh
 to work correctly.
@@ -39,7 +39,7 @@ to work correctly.
 **Example:**
 
 .. testcode::
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -70,7 +70,7 @@ User generated JWT token can be used for superuser access.
 
     import jwt
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
