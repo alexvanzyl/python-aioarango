@@ -1,18 +1,13 @@
-![Logo](https://user-images.githubusercontent.com/9555251/124462469-5ecb0e80-dd9a-11eb-9083-01f3e827f8d1.png)
-
-[![CodeCov](https://codecov.io/gh/mirrorrim/aioarango/branch/main/graph/badge.svg?token=DXg0O4hxnx)](https://codecov.io/gh/mirrorrim/aioarango)
-[![PyPI version](https://badge.fury.io/py/aioarango.svg)](https://badge.fury.io/py/aioarango)
-[![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/mirrorrim/aioarango/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/alexvanzyl/python-aioarango/blob/main/LICENSE)
 ![Python version](https://img.shields.io/badge/python-3.7%2B-blue)
 
-# aioarango
+# python-aioarango
 
 Asynchronous python driver for [ArangoDB](https://www.arangodb.com), a scalable multi-model
 database natively supporting documents, graphs and search.
 
-This project is forked from [python-arango](https://github.com/joowani/python-arango). 
-The only change is support for asynchronous API including tests. 
-The current version (1.0.0) fully corresponds to python-arango 7.2.0.
+This project is based of of the orginal work from [python-arango](https://github.com/joowani/python-arango) and [
+aioarango](https://github.com/mirrorrim/aioarango). 
 
 ## Requirements
 
@@ -22,7 +17,7 @@ The current version (1.0.0) fully corresponds to python-arango 7.2.0.
 ## Installation
 
 ```shell
-pip install aioarango
+pip install python_aioarango
 ```
 
 ## Getting Started
@@ -30,7 +25,7 @@ pip install aioarango
 Here is a simple usage example:
 
 ```python
-from aioarango import ArangoClient
+from python_aioarango import ArangoClient
 
 # Initialize the client for ArangoDB.
 client = ArangoClient(hosts="http://localhost:8529")
@@ -63,7 +58,7 @@ student_names = [document["name"] async for document in cursor]
 Another example with [graphs](https://www.arangodb.com/docs/stable/graphs.html):
 
 ```python
-from aioarango import ArangoClient
+from python_aioarango import ArangoClient
 
 # Initialize the client for ArangoDB.
 client = ArangoClient(hosts="http://localhost:8529")
@@ -110,5 +105,3 @@ result = await graph.traverse(
     strategy="breadthfirst"
 )
 ```
-
-Please see the [documentation](https://aioarango.readthedocs.io) for more details.
