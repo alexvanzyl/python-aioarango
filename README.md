@@ -6,7 +6,7 @@
 Asynchronous python driver for [ArangoDB](https://www.arangodb.com), a scalable multi-model
 database natively supporting documents, graphs and search.
 
-This project is based of of the orginal work from [python-arango](https://github.com/joowani/python-arango) and [
+This project is based off of the orginal work from [python-arango](https://github.com/joowani/python-arango) and [
 aioarango](https://github.com/mirrorrim/aioarango). 
 
 ## Requirements
