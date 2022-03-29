@@ -104,20 +104,21 @@ class DefaultHTTPClient(HTTPClient):
         :returns: HTTP response.
         :rtype: python_aioarango.response.Response
         """
-        response = await session.request(
-            method=method,
-            url=url,
-            params=params,
-            data=data,
-            headers=headers,
-            auth=auth,
-            timeout=self.REQUEST_TIMEOUT,
-        )
-        return Response(
-            method=method,
-            url=str(response.url),
-            headers=response.headers,
-            status_code=response.status_code,
-            status_text=response.reason_phrase,
-            raw_body=response.text,
-        )
+        async with session as client:
+            response = await client.request(
+                method=method,
+                url=url,
+                params=params,
+                data=data,
+                headers=headers,
+                auth=auth,
+                timeout=self.REQUEST_TIMEOUT,
+            )
+            return Response(
+                method=method,
+                url=str(response.url),
+                headers=response.headers,
+                status_code=response.status_code,
+                status_text=response.reason_phrase,
+                raw_body=response.text,
+            )
