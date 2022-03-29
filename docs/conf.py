@@ -1,6 +1,4 @@
 project = "python_aioarango"
-copyright = "2016-2021, Joohwan Oh, Alexey Tylindus"
-author = "Joohwan Oh & Alexey Tylindus"
 extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.autodoc",
