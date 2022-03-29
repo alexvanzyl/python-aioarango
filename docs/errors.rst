@@ -1,14 +1,14 @@
 Error Handling
 --------------
 
-All aioarango exceptions inherit :class:`aioarango.exceptions.ArangoError`,
-which splits into subclasses :class:`aioarango.exceptions.ArangoServerError` and
-:class:`aioarango.exceptions.ArangoClientError`.
+All python_aioarango exceptions inherit :class:`python_aioarango.exceptions.ArangoError`,
+which splits into subclasses :class:`python_aioarango.exceptions.ArangoServerError` and
+:class:`python_aioarango.exceptions.ArangoClientError`.
 
 Server Errors
 =============
 
-:class:`aioarango.exceptions.ArangoServerError` exceptions lightly wrap non-2xx
+:class:`python_aioarango.exceptions.ArangoServerError` exceptions lightly wrap non-2xx
 HTTP responses coming from ArangoDB. Each exception object contains the error
 message, error code and HTTP request response details.
 
@@ -16,7 +16,7 @@ message, error code and HTTP request response details.
 
 .. testcode::
 
-    from aioarango import ArangoClient, ArangoServerError, DocumentInsertError
+    from python_aioarango import ArangoClient, ArangoServerError, DocumentInsertError
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -69,15 +69,15 @@ See :ref:`Response` and :ref:`Request` for reference.
 Client Errors
 =============
 
-:class:`aioarango.exceptions.ArangoClientError` exceptions originate from
-aioarango client itself. They do not contain error codes nor HTTP request
+:class:`python_aioarango.exceptions.ArangoClientError` exceptions originate from
+python_aioarango client itself. They do not contain error codes nor HTTP request
 response details.
 
 **Example:**
 
 .. testcode::
 
-    from aioarango import ArangoClient, ArangoClientError, DocumentParseError
+    from python_aioarango import ArangoClient, ArangoClientError, DocumentParseError
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -110,9 +110,9 @@ response details.
 Exceptions
 ==========
 
-Below are all exceptions from aioarango.
+Below are all exceptions from python_aioarango.
 
-.. automodule:: aioarango.exceptions
+.. automodule:: python_aioarango.exceptions
     :members:
 
 
@@ -122,5 +122,5 @@ Error Codes
 The `errno` module contains a constant mapping to `ArangoDB's error codes
 <https://www.arangodb.com/docs/stable/appendix-error-codes.html>`_.
 
-.. automodule:: aioarango.errno
+.. automodule:: python_aioarango.errno
     :members:

@@ -1,13 +1,13 @@
 Error Codes
 -----------
 
-aioarango provides ArangoDB error code constants for convenience.
+python_aioarango provides ArangoDB error code constants for convenience.
 
 **Example**
 
 .. testcode::
 
-    from aioarango import errno
+    from python_aioarango import errno
 
     # Some examples
     assert errno.NOT_IMPLEMENTED == 9

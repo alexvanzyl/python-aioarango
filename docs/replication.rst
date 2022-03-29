@@ -12,7 +12,7 @@ information, refer to `ArangoDB manual`_.
 
 .. code-block:: python
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

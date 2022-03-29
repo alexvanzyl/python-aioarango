@@ -116,4 +116,4 @@ localdata/
 node_modules/
 
 # setuptools_scm
-aioarango/version.py
+python_aioarango/version.py

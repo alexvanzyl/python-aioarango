@@ -1,7 +1,7 @@
 Server Administration
 ---------------------
 
-aioarango provides operations for server administration and monitoring.
+python-aioarango provides operations for server administration and monitoring.
 Most of these operations can only be performed by admin users via ``_system``
 database.
 
@@ -9,7 +9,7 @@ database.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -65,7 +65,7 @@ Features available in enterprise edition only:
 
 .. code-block:: python
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

@@ -33,8 +33,8 @@ class DefaultApiExecutor:
     """Default API executor.
 
     :param connection: HTTP connection.
-    :type connection: aioarango.connection.BasicConnection |
-        aioarango.connection.JwtConnection | aioarango.connection.JwtSuperuserConnection
+    :type connection: python_aioarango.connection.BasicConnection |
+        python_aioarango.connection.JwtConnection | python_aioarango.connection.JwtSuperuserConnection
     """
 
     def __init__(self, connection: Connection) -> None:
@@ -50,7 +50,7 @@ class DefaultApiExecutor:
         """Execute an API request and return the result.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :param response_handler: HTTP response handler.
         :type response_handler: callable
         :return: API execution result.
@@ -63,10 +63,10 @@ class AsyncApiExecutor:
     """Async API Executor.
 
     :param connection: HTTP connection.
-    :type connection: aioarango.connection.BasicConnection |
-        aioarango.connection.JwtConnection | aioarango.connection.JwtSuperuserConnection
+    :type connection: python_aioarango.connection.BasicConnection |
+        python_aioarango.connection.JwtConnection | python_aioarango.connection.JwtSuperuserConnection
     :param return_result: If set to True, API executions return instances of
-        :class:`aioarango.job.AsyncJob` and results can be retrieved from server
+        :class:`python_aioarango.job.AsyncJob` and results can be retrieved from server
         once available. If set to False, API executions return None and no
         results are stored on server.
     :type return_result: bool
@@ -86,12 +86,12 @@ class AsyncApiExecutor:
         """Execute an API request asynchronously.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :param response_handler: HTTP response handler.
         :type response_handler: callable
         :return: Async job or None if **return_result** parameter was set to
             False during initialization.
-        :rtype: aioarango.job.AsyncJob | None
+        :rtype: python_aioarango.job.AsyncJob | None
         """
         if self._return_result:
             request.headers["x-arango-async"] = "store"
@@ -113,7 +113,7 @@ class BatchApiExecutor:
 
     :param connection: HTTP connection.
     :param return_result: If set to True, API executions return instances of
-        :class:`aioarango.job.BatchJob` that are populated with results on commit.
+        :class:`python_aioarango.job.BatchJob` that are populated with results on commit.
         If set to False, API executions return None and no results are tracked
         client-side.
     :type return_result: bool
@@ -152,7 +152,7 @@ class BatchApiExecutor:
 
         :return: Batch jobs or None if **return_result** parameter was set to
             False during initialization.
-        :rtype: [aioarango.job.BatchJob] | None
+        :rtype: [python_aioarango.job.BatchJob] | None
         """
         if not self._return_result:
             return None
@@ -164,13 +164,13 @@ class BatchApiExecutor:
         """Place the request in the batch queue.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :param response_handler: HTTP response handler.
         :type response_handler: callable
         :return: Batch job or None if **return_result** parameter was set to
             False during initialization.
-        :rtype: aioarango.job.BatchJob | None
-        :raise aioarango.exceptions.BatchStateError: If batch was already
+        :rtype: python_aioarango.job.BatchJob | None
+        :raise python_aioarango.exceptions.BatchStateError: If batch was already
             committed.
         """
         if self._committed:
@@ -184,15 +184,15 @@ class BatchApiExecutor:
         """Execute the queued requests in a single batch API request.
 
         If **return_result** parameter was set to True during initialization,
-        :class:`aioarango.job.BatchJob` instances are populated with results.
+        :class:`python_aioarango.job.BatchJob` instances are populated with results.
 
         :return: Batch jobs or None if **return_result** parameter was set to
             False during initialization.
-        :rtype: [aioarango.job.BatchJob] | None
-        :raise aioarango.exceptions.BatchStateError: If batch state is invalid
+        :rtype: [python_aioarango.job.BatchJob] | None
+        :raise python_aioarango.exceptions.BatchStateError: If batch state is invalid
             (e.g. batch was already committed or size of response from server
             did not match the expected).
-        :raise aioarango.exceptions.BatchExecuteError: If commit fails.
+        :raise python_aioarango.exceptions.BatchExecuteError: If commit fails.
         """
         if self._committed:
             raise BatchStateError("batch already committed")
@@ -352,7 +352,7 @@ class TransactionApiExecutor:
         """Execute API request in a transaction and return the result.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :param response_handler: HTTP response handler.
         :type response_handler: callable
         :return: API execution result.
@@ -366,7 +366,7 @@ class TransactionApiExecutor:
 
         :return: Transaction status.
         :rtype: str
-        :raise aioarango.exceptions.TransactionStatusError: If retrieval fails.
+        :raise python_aioarango.exceptions.TransactionStatusError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -383,7 +383,7 @@ class TransactionApiExecutor:
 
         :return: True if commit was successful.
         :rtype: bool
-        :raise aioarango.exceptions.TransactionCommitError: If commit fails.
+        :raise python_aioarango.exceptions.TransactionCommitError: If commit fails.
         """
         request = Request(
             method="put",
@@ -400,7 +400,7 @@ class TransactionApiExecutor:
 
         :return: True if the abort operation was successful.
         :rtype: bool
-        :raise aioarango.exceptions.TransactionAbortError: If abort fails.
+        :raise python_aioarango.exceptions.TransactionAbortError: If abort fails.
         """
         request = Request(
             method="delete",

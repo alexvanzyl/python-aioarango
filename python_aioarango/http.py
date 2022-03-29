@@ -53,7 +53,7 @@ class HTTPClient(ABC):  # pragma: no cover
         :param auth: Username and password.
         :type auth: tuple
         :returns: HTTP response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         raise NotImplementedError
 
@@ -102,7 +102,7 @@ class DefaultHTTPClient(HTTPClient):
         :param auth: Username and password.
         :type auth: tuple
         :returns: HTTP response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         async with session as client:
             response = await client.request(

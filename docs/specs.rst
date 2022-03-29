@@ -2,14 +2,14 @@ API Specification
 -----------------
 
 This page contains the specification for all classes and methods available in
-aioarango.
+python_aioarango.
 
 .. _ArangoClient:
 
 ArangoClient
 ============
 
-.. autoclass:: aioarango.client.ArangoClient
+.. autoclass:: python_aioarango.client.ArangoClient
     :members:
 
 .. _AsyncDatabase:
@@ -17,7 +17,7 @@ ArangoClient
 AsyncDatabase
 =============
 
-.. autoclass:: aioarango.database.AsyncDatabase
+.. autoclass:: python_aioarango.database.AsyncDatabase
     :inherited-members:
     :members:
 
@@ -26,7 +26,7 @@ AsyncDatabase
 AsyncJob
 ========
 
-.. autoclass:: aioarango.job.AsyncJob
+.. autoclass:: python_aioarango.job.AsyncJob
     :members:
 
 .. _AQL:
@@ -34,7 +34,7 @@ AsyncJob
 AQL
 ====
 
-.. autoclass:: aioarango.aql.AQL
+.. autoclass:: python_aioarango.aql.AQL
     :members:
 
 .. _AQLQueryCache:
@@ -42,7 +42,7 @@ AQL
 AQLQueryCache
 =============
 
-.. autoclass:: aioarango.aql.AQLQueryCache
+.. autoclass:: python_aioarango.aql.AQLQueryCache
     :members:
 
 .. _Backup:
@@ -50,7 +50,7 @@ AQLQueryCache
 Backup
 ======
 
-.. autoclass:: aioarango.backup.Backup
+.. autoclass:: python_aioarango.backup.Backup
     :inherited-members:
     :members:
 
@@ -59,7 +59,7 @@ Backup
 BatchDatabase
 =============
 
-.. autoclass:: aioarango.database.BatchDatabase
+.. autoclass:: python_aioarango.database.BatchDatabase
     :inherited-members:
     :members:
 
@@ -68,7 +68,7 @@ BatchDatabase
 BatchJob
 ========
 
-.. autoclass:: aioarango.job.BatchJob
+.. autoclass:: python_aioarango.job.BatchJob
     :members:
 
 .. _Cluster:
@@ -76,7 +76,7 @@ BatchJob
 Cluster
 =======
 
-.. autoclass:: aioarango.cluster.Cluster
+.. autoclass:: python_aioarango.cluster.Cluster
     :members:
 
 .. _Collection:
@@ -84,7 +84,7 @@ Cluster
 Collection
 ==========
 
-.. autoclass:: aioarango.collection.Collection
+.. autoclass:: python_aioarango.collection.Collection
     :members:
 
 .. _Cursor:
@@ -92,7 +92,7 @@ Collection
 Cursor
 ======
 
-.. autoclass:: aioarango.cursor.Cursor
+.. autoclass:: python_aioarango.cursor.Cursor
     :members:
 
 .. _DefaultHTTPClient:
@@ -100,7 +100,7 @@ Cursor
 DefaultHTTPClient
 =================
 
-.. autoclass:: aioarango.http.DefaultHTTPClient
+.. autoclass:: python_aioarango.http.DefaultHTTPClient
     :members:
 
 .. _EdgeCollection:
@@ -108,7 +108,7 @@ DefaultHTTPClient
 EdgeCollection
 ==============
 
-.. autoclass:: aioarango.collection.EdgeCollection
+.. autoclass:: python_aioarango.collection.EdgeCollection
     :members:
 
 .. _Foxx:
@@ -116,7 +116,7 @@ EdgeCollection
 Foxx
 ====
 
-.. autoclass:: aioarango.foxx.Foxx
+.. autoclass:: python_aioarango.foxx.Foxx
     :members:
 
 .. _Graph:
@@ -124,7 +124,7 @@ Foxx
 Graph
 =====
 
-.. autoclass:: aioarango.graph.Graph
+.. autoclass:: python_aioarango.graph.Graph
     :members:
 
 .. _HTTPClient:
@@ -132,7 +132,7 @@ Graph
 HTTPClient
 ==========
 
-.. autoclass:: aioarango.http.HTTPClient
+.. autoclass:: python_aioarango.http.HTTPClient
     :members:
 
 .. _Pregel:
@@ -140,7 +140,7 @@ HTTPClient
 Pregel
 ======
 
-.. autoclass:: aioarango.pregel.Pregel
+.. autoclass:: python_aioarango.pregel.Pregel
     :members:
 
 .. _Replication:
@@ -148,7 +148,7 @@ Pregel
 Replication
 ===========
 
-.. autoclass:: aioarango.replication.Replication
+.. autoclass:: python_aioarango.replication.Replication
     :members:
 
 .. _Request:
@@ -156,7 +156,7 @@ Replication
 Request
 =======
 
-.. autoclass:: aioarango.request.Request
+.. autoclass:: python_aioarango.request.Request
     :members:
 
 .. _Response:
@@ -164,7 +164,7 @@ Request
 Response
 ========
 
-.. autoclass:: aioarango.response.Response
+.. autoclass:: python_aioarango.response.Response
     :members:
 
 .. _StandardCollection:
@@ -172,7 +172,7 @@ Response
 StandardCollection
 ==================
 
-.. autoclass:: aioarango.collection.StandardCollection
+.. autoclass:: python_aioarango.collection.StandardCollection
     :inherited-members:
     :members:
 
@@ -181,7 +181,7 @@ StandardCollection
 StandardDatabase
 ================
 
-.. autoclass:: aioarango.database.StandardDatabase
+.. autoclass:: python_aioarango.database.StandardDatabase
     :inherited-members:
     :members:
 
@@ -190,7 +190,7 @@ StandardDatabase
 TransactionDatabase
 ===================
 
-.. autoclass:: aioarango.database.TransactionDatabase
+.. autoclass:: python_aioarango.database.TransactionDatabase
     :inherited-members:
     :members:
 
@@ -199,7 +199,7 @@ TransactionDatabase
 VertexCollection
 ================
 
-.. autoclass:: aioarango.collection.VertexCollection
+.. autoclass:: python_aioarango.collection.VertexCollection
     :members:
 
 .. _WriteAheadLog:
@@ -207,5 +207,5 @@ VertexCollection
 WAL
 ====
 
-.. autoclass:: aioarango.wal.WAL
+.. autoclass:: python_aioarango.wal.WAL
     :members:

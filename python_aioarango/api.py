@@ -25,9 +25,9 @@ class ApiGroup:
         """Return the HTTP connection.
 
         :return: HTTP connection.
-        :rtype: aioarango.connection.BasicConnection |
-            aioarango.connection.JwtConnection |
-            aioarango.connection.JwtSuperuserConnection
+        :rtype: python_aioarango.connection.BasicConnection |
+            python_aioarango.connection.JwtConnection |
+            python_aioarango.connection.JwtSuperuserConnection
         """
         return self._conn
 
@@ -65,7 +65,7 @@ class ApiGroup:
         """Execute an API.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :param response_handler: HTTP response handler.
         :type response_handler: callable
         :return: API execution result.

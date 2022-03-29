@@ -1,6 +1,4 @@
-project = "aioarango"
-copyright = "2016-2021, Joohwan Oh, Alexey Tylindus"
-author = "Joohwan Oh & Alexey Tylindus"
+project = "python_aioarango"
 extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.autodoc",
@@ -15,7 +13,7 @@ master_doc = "index"
 autodoc_member_order = "bysource"
 
 doctest_global_setup = """
-from aioarango import ArangoClient
+from python_aioarango import ArangoClient
 # Initialize the ArangoDB client.
 client = ArangoClient()
 # Connect to "_system" database as root user.

@@ -52,7 +52,7 @@ class Replication(ApiGroup):
         :type all_databases: bool | None
         :return: Overview of collections and indexes.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationInventoryError: If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationInventoryError: If retrieval fails.
         """
         params: Params = {"batchId": batch_id}
         if include_system is not None:
@@ -78,7 +78,7 @@ class Replication(ApiGroup):
         :type ttl: int | None
         :return: ID of the batch.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationDumpBatchCreateError: If create fails.
+        :raise python_aioarango.exceptions.ReplicationDumpBatchCreateError: If create fails.
         """
         request = Request(
             method="post", endpoint="/_api/replication/batch", data={"ttl": ttl}
@@ -98,7 +98,7 @@ class Replication(ApiGroup):
         :type batch_id: str
         :return: True if deletion was successful.
         :rtype: bool
-        :raise aioarango.exceptions.ReplicationDumpBatchDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.ReplicationDumpBatchDeleteError: If delete fails.
         """
         request = Request(
             method="delete",
@@ -122,7 +122,7 @@ class Replication(ApiGroup):
         :type ttl: int
         :return: True if operation was successful.
         :rtype: bool
-        :raise aioarango.exceptions.ReplicationDumpBatchExtendError: If dump fails.
+        :raise python_aioarango.exceptions.ReplicationDumpBatchExtendError: If dump fails.
         """
         request = Request(
             method="put",
@@ -158,7 +158,7 @@ class Replication(ApiGroup):
         :type deserialize: bool
         :return: Collection events data.
         :rtype: str | [dict]
-        :raise aioarango.exceptions.ReplicationDumpError: If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationDumpError: If retrieval fails.
         """
         params: Params = {"collection": collection}
 
@@ -240,7 +240,7 @@ class Replication(ApiGroup):
         :type initial_sync_wait_time: int | None
         :return: Collections transferred and last log tick.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationSyncError: If sync fails.
+        :raise python_aioarango.exceptions.ReplicationSyncError: If sync fails.
         """
         data: Json = {"endpoint": endpoint}
 
@@ -280,7 +280,7 @@ class Replication(ApiGroup):
         :type include_system: bool
         :return: Overview of collections and indexes on the cluster.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationClusterInventoryError:If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationClusterInventoryError:If retrieval fails.
         """
         params: Params = {}
         if include_system is not None:
@@ -302,7 +302,7 @@ class Replication(ApiGroup):
 
         :return: Logger state.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationLoggerStateError: If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationLoggerStateError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -321,7 +321,7 @@ class Replication(ApiGroup):
 
         :return: First tick value.
         :rtype: str
-        :raise aioarango.exceptions.ReplicationLoggerFirstTickError: If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationLoggerFirstTickError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -340,7 +340,7 @@ class Replication(ApiGroup):
 
         :return: Configuration of the replication applier.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationApplierConfigError: If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationApplierConfigError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -469,7 +469,7 @@ class Replication(ApiGroup):
         :type restrict_collections: [str] | None
         :return: Updated configuration.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationApplierConfigSetError: If update fails.
+        :raise python_aioarango.exceptions.ReplicationApplierConfigSetError: If update fails.
         """
         data: Json = {"endpoint": endpoint}
 
@@ -530,7 +530,7 @@ class Replication(ApiGroup):
 
         :return: Applier state and details.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationApplierStateError: If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationApplierStateError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -555,7 +555,7 @@ class Replication(ApiGroup):
         :type last_tick: str
         :return: Applier state and details.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationApplierStartError: If operation fails.
+        :raise python_aioarango.exceptions.ReplicationApplierStartError: If operation fails.
         """
         request = Request(
             method="put",
@@ -575,7 +575,7 @@ class Replication(ApiGroup):
 
         :return: Applier state and details.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationApplierStopError: If operation fails.
+        :raise python_aioarango.exceptions.ReplicationApplierStopError: If operation fails.
         """
         request = Request(
             method="put",
@@ -700,7 +700,7 @@ class Replication(ApiGroup):
         :type verbose: bool | None
         :return: Replication details.
         :rtype: dict
-        :raise aioarango.exceptions.ReplicationApplierStopError: If operation fails.
+        :raise python_aioarango.exceptions.ReplicationApplierStopError: If operation fails.
         """
         data: Json = {"endpoint": endpoint}
 
@@ -759,7 +759,7 @@ class Replication(ApiGroup):
 
         :return: Server ID.
         :rtype: str
-        :raise aioarango.exceptions.ReplicationServerIDError: If retrieval fails.
+        :raise python_aioarango.exceptions.ReplicationServerIDError: If retrieval fails.
         """
         request = Request(
             method="get",

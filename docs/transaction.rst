@@ -8,7 +8,7 @@ logical unit of work (ACID compliant).
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -69,14 +69,14 @@ logical unit of work (ACID compliant).
 See :ref:`TransactionDatabase` for API specification.
 
 Alternatively, you can use
-:func:`aioarango.database.StandardDatabase.execute_transaction` to run raw
+:func:`python_aioarango.database.StandardDatabase.execute_transaction` to run raw
 Javascript code in a transaction.
 
 **Example:**
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

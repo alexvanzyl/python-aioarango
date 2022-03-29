@@ -31,7 +31,7 @@ class Backup(ApiGroup):  # pragma: no cover
         :type backup_id: str
         :return: Backup details.
         :rtype: dict
-        :raise aioarango.exceptions.BackupGetError: If delete fails.
+        :raise python_aioarango.exceptions.BackupGetError: If delete fails.
         """
         request = Request(
             method="post",
@@ -71,7 +71,7 @@ class Backup(ApiGroup):  # pragma: no cover
         :type timeout: int
         :return: Result of the create operation.
         :rtype: dict
-        :raise aioarango.exceptions.BackupCreateError: If create fails.
+        :raise python_aioarango.exceptions.BackupCreateError: If create fails.
         """
         data: Json = {"label": label}
 
@@ -98,7 +98,7 @@ class Backup(ApiGroup):  # pragma: no cover
         :type backup_id: str
         :return: True if the backup was deleted successfully.
         :rtype: bool
-        :raise aioarango.exceptions.BackupDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.BackupDeleteError: If delete fails.
         """
         request = Request(
             method="post", endpoint="/_admin/backup/delete", data={"id": backup_id}
@@ -139,7 +139,7 @@ class Backup(ApiGroup):  # pragma: no cover
         :type download_id: str
         :return: Download details.
         :rtype: dict
-        :raise aioarango.exceptions.BackupDownloadError: If operation fails.
+        :raise python_aioarango.exceptions.BackupDownloadError: If operation fails.
         """
         data: Json = {}
         if download_id is not None:
@@ -190,7 +190,7 @@ class Backup(ApiGroup):  # pragma: no cover
         :type abort: bool
         :return: Upload details.
         :rtype: dict
-        :raise aioarango.exceptions.BackupUploadError: If upload operation fails.
+        :raise python_aioarango.exceptions.BackupUploadError: If upload operation fails.
         """
         data: Json = {}
 
@@ -221,7 +221,7 @@ class Backup(ApiGroup):  # pragma: no cover
         :type backup_id: str
         :return: Result of the restore operation.
         :rtype: dict
-        :raise aioarango.exceptions.BackupRestoreError: If restore fails.
+        :raise python_aioarango.exceptions.BackupRestoreError: If restore fails.
         """
         request = Request(
             method="post", endpoint="/_admin/backup/restore", data={"id": backup_id}

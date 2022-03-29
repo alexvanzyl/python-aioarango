@@ -1,7 +1,7 @@
 Analyzers
 ---------
 
-aioarango supports **analyzers**. For more information on analyzers, refer
+python_aioarango supports **analyzers**. For more information on analyzers, refer
 to `ArangoDB manual`_.
 
 .. _ArangoDB manual: https://docs.arangodb.com
@@ -10,7 +10,7 @@ to `ArangoDB manual`_.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

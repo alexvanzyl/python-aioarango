@@ -86,9 +86,9 @@ class BaseConnection(object):
         :param deserialize: Deserialize the response body.
         :type deserialize: bool
         :param resp: HTTP response.
-        :type resp: aioarango.response.Response
+        :type resp: python_aioarango.response.Response
         :return: HTTP response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         if deserialize:
             resp.body = self.deserialize(resp.raw_body)
@@ -106,11 +106,11 @@ class BaseConnection(object):
         """Build and return a bulk error response.
 
         :param parent_response: Parent response.
-        :type parent_response: aioarango.response.Response
+        :type parent_response: python_aioarango.response.Response
         :param body: Error response body.
         :type body: dict
         :return: Child bulk error response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         resp = Response(
             method=parent_response.method,
@@ -162,9 +162,9 @@ class BaseConnection(object):
         """Send an HTTP request to ArangoDB server.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :return: HTTP response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         raise NotImplementedError
 
@@ -175,7 +175,7 @@ class BasicConnection(BaseConnection):
     :param hosts: Host URL or list of URLs (coordinators in a cluster).
     :type hosts: [str]
     :param host_resolver: Host resolver (used for clusters).
-    :type host_resolver: aioarango.resolver.HostResolver
+    :type host_resolver: python_aioarango.resolver.HostResolver
     :param sessions: HTTP session objects per host.
     :type sessions: [requests.Session]
     :param db_name: Database name.
@@ -185,7 +185,7 @@ class BasicConnection(BaseConnection):
     :param password: Password.
     :type password: str
     :param http_client: User-defined HTTP client.
-    :type http_client: aioarango.http.HTTPClient
+    :type http_client: python_aioarango.http.HTTPClient
     """
 
     def __init__(
@@ -216,9 +216,9 @@ class BasicConnection(BaseConnection):
         """Send an HTTP request to ArangoDB server.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :return: HTTP response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         host_index = self._host_resolver.get_host_index()
         resp = await self._http.send_request(
@@ -239,7 +239,7 @@ class JwtConnection(BaseConnection):
     :param hosts: Host URL or list of URLs (coordinators in a cluster).
     :type hosts: [str]
     :param host_resolver: Host resolver (used for clusters).
-    :type host_resolver: aioarango.resolver.HostResolver
+    :type host_resolver: python_aioarango.resolver.HostResolver
     :param sessions: HTTP session objects per host.
     :type sessions: [requests.Session]
     :param db_name: Database name.
@@ -249,7 +249,7 @@ class JwtConnection(BaseConnection):
     :param password: Password.
     :type password: str
     :param http_client: User-defined HTTP client.
-    :type http_client: aioarango.http.HTTPClient
+    :type http_client: python_aioarango.http.HTTPClient
     """
 
     def __init__(
@@ -285,9 +285,9 @@ class JwtConnection(BaseConnection):
         """Send an HTTP request to ArangoDB server.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :return: HTTP response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         host_index = self._host_resolver.get_host_index()
 
@@ -377,13 +377,13 @@ class JwtSuperuserConnection(BaseConnection):
     :param hosts: Host URL or list of URLs (coordinators in a cluster).
     :type hosts: [str]
     :param host_resolver: Host resolver (used for clusters).
-    :type host_resolver: aioarango.resolver.HostResolver
+    :type host_resolver: python_aioarango.resolver.HostResolver
     :param sessions: HTTP session objects per host.
     :type sessions: [requests.Session]
     :param db_name: Database name.
     :type db_name: str
     :param http_client: User-defined HTTP client.
-    :type http_client: aioarango.http.HTTPClient
+    :type http_client: python_aioarango.http.HTTPClient
     :param superuser_token: User generated token for superuser access.
     :type superuser_token: str
     """
@@ -414,9 +414,9 @@ class JwtSuperuserConnection(BaseConnection):
         """Send an HTTP request to ArangoDB server.
 
         :param request: HTTP request.
-        :type request: aioarango.request.Request
+        :type request: python_aioarango.request.Request
         :return: HTTP response.
-        :rtype: aioarango.response.Response
+        :rtype: python_aioarango.response.Response
         """
         host_index = self._host_resolver.get_host_index()
         request.headers["Authorization"] = self._auth_header

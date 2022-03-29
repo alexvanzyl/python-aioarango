@@ -25,7 +25,7 @@ class Cluster(ApiGroup):  # pragma: no cover
 
         :return: Server ID.
         :rtype: str
-        :raise aioarango.exceptions.ClusterServerIDError: If retrieval fails.
+        :raise python_aioarango.exceptions.ClusterServerIDError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_admin/server/id")
 
@@ -43,7 +43,7 @@ class Cluster(ApiGroup):  # pragma: no cover
             not in a cluster), "COORDINATOR" (cluster coordinator), "PRIMARY",
             "SECONDARY", "AGENT" (Agency server in a cluster) or "UNDEFINED".
         :rtype: str
-        :raise aioarango.exceptions.ClusterServerRoleError: If retrieval fails.
+        :raise python_aioarango.exceptions.ClusterServerRoleError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_admin/server/role")
 
@@ -61,7 +61,7 @@ class Cluster(ApiGroup):  # pragma: no cover
         :type server_id: str
         :return: Version of the given server.
         :rtype: dict
-        :raise aioarango.exceptions.ClusterServerVersionError: If retrieval fails.
+        :raise python_aioarango.exceptions.ClusterServerVersionError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -83,7 +83,7 @@ class Cluster(ApiGroup):  # pragma: no cover
         :type server_id: str
         :return: Engine details of the given server.
         :rtype: dict
-        :raise aioarango.exceptions.ClusterServerEngineError: If retrieval fails.
+        :raise python_aioarango.exceptions.ClusterServerEngineError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -103,7 +103,7 @@ class Cluster(ApiGroup):  # pragma: no cover
 
         :return: Number of servers in the cluster.
         :rtype: int
-        :raise aioarango.exceptions.ClusterServerCountError: If retrieval fails.
+        :raise python_aioarango.exceptions.ClusterServerCountError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_admin/cluster/numberOfServers")
 
@@ -122,7 +122,7 @@ class Cluster(ApiGroup):  # pragma: no cover
         :type server_id: str
         :return: Statistics for the given server.
         :rtype: dict
-        :raise aioarango.exceptions.ClusterServerStatisticsError: If retrieval fails.
+        :raise python_aioarango.exceptions.ClusterServerStatisticsError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -142,7 +142,7 @@ class Cluster(ApiGroup):  # pragma: no cover
 
         :return: Cluster health.
         :rtype: dict
-        :raise aioarango.exceptions.ClusterHealthError: If retrieval fails.
+        :raise python_aioarango.exceptions.ClusterHealthError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -163,7 +163,7 @@ class Cluster(ApiGroup):  # pragma: no cover
         :type mode: str
         :return: Result of the operation.
         :rtype: dict
-        :raise aioarango.exceptions.ClusterMaintenanceModeError: If toggle fails.
+        :raise python_aioarango.exceptions.ClusterMaintenanceModeError: If toggle fails.
         """
         request = Request(
             method="put",
@@ -183,7 +183,7 @@ class Cluster(ApiGroup):  # pragma: no cover
 
         :return: List of endpoints.
         :rtype: [str]
-        :raise aioarango.exceptions.ServerEndpointsError: If retrieval fails.
+        :raise python_aioarango.exceptions.ServerEndpointsError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/cluster/endpoints")
 

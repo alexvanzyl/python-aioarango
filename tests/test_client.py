@@ -22,7 +22,7 @@ async def test_client_attributes():
     http_client = DefaultHTTPClient()
 
     client = ArangoClient(hosts="http://127.0.0.1:8529", http_client=http_client)
-    assert client.version == get_distribution("aioarango").version
+    assert client.version == get_distribution("python_aioarango").version
     assert client.hosts == ["http://127.0.0.1:8529"]
 
     assert repr(client) == "<ArangoClient http://127.0.0.1:8529>"
@@ -37,7 +37,7 @@ async def test_client_attributes():
         serializer=json.dumps,
         deserializer=json.loads,
     )
-    assert client.version == get_distribution("aioarango").version
+    assert client.version == get_distribution("python_aioarango").version
     assert client.hosts == client_hosts
     assert repr(client) == client_repr
     assert isinstance(client._host_resolver, RoundRobinHostResolver)
@@ -49,7 +49,7 @@ async def test_client_attributes():
         serializer=json.dumps,
         deserializer=json.loads,
     )
-    assert client.version == get_distribution("aioarango").version
+    assert client.version == get_distribution("python_aioarango").version
     assert client.hosts == client_hosts
     assert repr(client) == client_repr
     assert isinstance(client._host_resolver, RandomHostResolver)

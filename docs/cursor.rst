@@ -1,9 +1,9 @@
 Cursors
 -------
 
-Many operations provided by aioarango (e.g. executing :doc:`aql` queries)
+Many operations provided by python_aioarango (e.g. executing :doc:`aql` queries)
 return result **cursors** to batch the network communication between ArangoDB
-server and aioarango client. Each HTTP request from a cursor fetches the
+server and python_aioarango client. Each HTTP request from a cursor fetches the
 next batch of results (usually documents). Depending on the query, the total
 number of items in the result set may or may not be known in advance.
 
@@ -11,7 +11,7 @@ number of items in the result set may or may not be known in advance.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -80,17 +80,17 @@ number of items in the result set may or may not be known in advance.
 See :ref:`Cursor` for API specification.
 
 If the fetched result batch is depleted while you are iterating over a cursor
-(or while calling the method :func:`aioarango.cursor.Cursor.next`), aioarango
+(or while calling the method :func:`python_aioarango.cursor.Cursor.next`), python_aioarango
 automatically sends an HTTP request to the server to fetch the next batch
 (just-in-time style). To control exactly when the fetches occur, you can use
-methods :func:`aioarango.cursor.Cursor.fetch` and :func:`arango.cursor.Cursor.pop`
+methods :func:`python_aioarango.cursor.Cursor.fetch` and :func:`arango.cursor.Cursor.pop`
 instead.
 
 **Example:**
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

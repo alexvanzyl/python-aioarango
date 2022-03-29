@@ -41,7 +41,7 @@ class Graph(ApiGroup):
         :param vertex: Vertex document ID or body with "_id" field.
         :type vertex: str | dict
         :return: Vertex collection API wrapper.
-        :rtype: aioarango.collection.VertexCollection
+        :rtype: python_aioarango.collection.VertexCollection
         """
         return self.vertex_collection(get_col_name(vertex))
 
@@ -51,7 +51,7 @@ class Graph(ApiGroup):
         :param edge: Edge document ID or body with "_id" field.
         :type edge: str | dict
         :return: Edge collection API wrapper.
-        :rtype: aioarango.collection.EdgeCollection
+        :rtype: python_aioarango.collection.EdgeCollection
         """
         return self.edge_collection(get_col_name(edge))
 
@@ -69,7 +69,7 @@ class Graph(ApiGroup):
 
         :return: Graph properties.
         :rtype: dict
-        :raise aioarango.exceptions.GraphPropertiesError: If retrieval fails.
+        :raise python_aioarango.exceptions.GraphPropertiesError: If retrieval fails.
         """
         request = Request(method="get", endpoint=f"/_api/gharial/{self._name}")
 
@@ -109,7 +109,7 @@ class Graph(ApiGroup):
 
         :return: Names of vertex collections that are not orphaned.
         :rtype: [str]
-        :raise aioarango.exceptions.VertexCollectionListError: If retrieval fails.
+        :raise python_aioarango.exceptions.VertexCollectionListError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -129,7 +129,7 @@ class Graph(ApiGroup):
         :param name: Vertex collection name.
         :type name: str
         :return: Vertex collection API wrapper.
-        :rtype: aioarango.collection.VertexCollection
+        :rtype: python_aioarango.collection.VertexCollection
         """
         return VertexCollection(self._conn, self._executor, self._name, name)
 
@@ -139,8 +139,8 @@ class Graph(ApiGroup):
         :param name: Vertex collection name.
         :type name: str
         :return: Vertex collection API wrapper.
-        :rtype: aioarango.collection.VertexCollection
-        :raise aioarango.exceptions.VertexCollectionCreateError: If create fails.
+        :rtype: python_aioarango.collection.VertexCollection
+        :raise python_aioarango.exceptions.VertexCollectionCreateError: If create fails.
         """
         request = Request(
             method="post",
@@ -167,7 +167,7 @@ class Graph(ApiGroup):
         :type purge: bool
         :return: True if vertex collection was deleted successfully.
         :rtype: bool
-        :raise aioarango.exceptions.VertexCollectionDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.VertexCollectionDeleteError: If delete fails.
         """
         request = Request(
             method="delete",
@@ -224,7 +224,7 @@ class Graph(ApiGroup):
         :param name: Edge collection name.
         :type name: str
         :return: Edge collection API wrapper.
-        :rtype: aioarango.collection.EdgeCollection
+        :rtype: python_aioarango.collection.EdgeCollection
         """
         return EdgeCollection(self._conn, self._executor, self._name, name)
 
@@ -233,7 +233,7 @@ class Graph(ApiGroup):
 
         :return: Edge definitions of the graph.
         :rtype: [dict]
-        :raise aioarango.exceptions.EdgeDefinitionListError: If retrieval fails.
+        :raise python_aioarango.exceptions.EdgeDefinitionListError: If retrieval fails.
         """
         request = Request(method="get", endpoint=f"/_api/gharial/{self._name}")
 
@@ -279,8 +279,8 @@ class Graph(ApiGroup):
         :param to_vertex_collections: Names of "to" vertex collections.
         :type to_vertex_collections: [str]
         :return: Edge collection API wrapper.
-        :rtype: aioarango.collection.EdgeCollection
-        :raise aioarango.exceptions.EdgeDefinitionCreateError: If create fails.
+        :rtype: python_aioarango.collection.EdgeCollection
+        :raise python_aioarango.exceptions.EdgeDefinitionCreateError: If create fails.
         """
         request = Request(
             method="post",
@@ -314,8 +314,8 @@ class Graph(ApiGroup):
         :param to_vertex_collections: Names of "to" vertex collections.
         :type to_vertex_collections: [str]
         :return: Edge collection API wrapper.
-        :rtype: aioarango.collection.EdgeCollection
-        :raise aioarango.exceptions.EdgeDefinitionReplaceError: If replace fails.
+        :rtype: python_aioarango.collection.EdgeCollection
+        :raise python_aioarango.exceptions.EdgeDefinitionReplaceError: If replace fails.
         """
         request = Request(
             method="put",
@@ -347,7 +347,7 @@ class Graph(ApiGroup):
         :type purge: bool
         :return: True if edge definition was deleted successfully.
         :rtype: bool
-        :raise aioarango.exceptions.EdgeDefinitionDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.EdgeDefinitionDeleteError: If delete fails.
         """
         request = Request(
             method="delete",
@@ -441,7 +441,7 @@ class Graph(ApiGroup):
         :type expander_func: str | None
         :return: Visited edges and vertices.
         :rtype: dict
-        :raise aioarango.exceptions.GraphTraverseError: If traversal fails.
+        :raise python_aioarango.exceptions.GraphTraverseError: If traversal fails.
         """
         if strategy is not None:
             if strategy.lower() == "dfs":
@@ -509,8 +509,8 @@ class Graph(ApiGroup):
         :type check_rev: bool
         :return: True if vertex document exists, False otherwise.
         :rtype: bool
-        :raise aioarango.exceptions.DocumentGetError: If check fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentGetError: If check fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_vertex(vertex).has(vertex, rev, check_rev)
 
@@ -532,8 +532,8 @@ class Graph(ApiGroup):
         :type check_rev: bool
         :return: Vertex document or None if not found.
         :rtype: dict | None
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_vertex(vertex).get(vertex, rev, check_rev)
 
@@ -560,7 +560,7 @@ class Graph(ApiGroup):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         return await self.vertex_collection(collection).insert(vertex, sync, silent)
 
@@ -591,8 +591,8 @@ class Graph(ApiGroup):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentUpdateError: If update fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentUpdateError: If update fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_vertex(vertex).update(
             vertex=vertex,
@@ -625,8 +625,8 @@ class Graph(ApiGroup):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentReplaceError: If replace fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_vertex(vertex).replace(
             vertex=vertex, check_rev=check_rev, sync=sync, silent=silent
@@ -660,8 +660,8 @@ class Graph(ApiGroup):
             not found and **ignore_missing** was set to True (does not apply in
             transactions).
         :rtype: bool
-        :raise aioarango.exceptions.DocumentDeleteError: If delete fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_vertex(vertex).delete(
             vertex=vertex,
@@ -690,8 +690,8 @@ class Graph(ApiGroup):
         :type check_rev: bool
         :return: True if edge document exists, False otherwise.
         :rtype: bool
-        :raise aioarango.exceptions.DocumentInError: If check fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentInError: If check fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_edge(edge).has(edge, rev, check_rev)
 
@@ -710,8 +710,8 @@ class Graph(ApiGroup):
         :type check_rev: bool
         :return: Edge document or None if not found.
         :rtype: dict | None
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_edge(edge).get(edge, rev, check_rev)
 
@@ -739,7 +739,7 @@ class Graph(ApiGroup):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         return await self.edge_collection(collection).insert(edge, sync, silent)
 
@@ -770,8 +770,8 @@ class Graph(ApiGroup):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentUpdateError: If update fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentUpdateError: If update fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_edge(edge).update(
             edge=edge,
@@ -805,8 +805,8 @@ class Graph(ApiGroup):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentReplaceError: If replace fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_edge(edge).replace(
             edge=edge, check_rev=check_rev, sync=sync, silent=silent
@@ -840,8 +840,8 @@ class Graph(ApiGroup):
             found and **ignore_missing** was set to True (does not  apply in
             transactions).
         :rtype: bool
-        :raise aioarango.exceptions.DocumentDeleteError: If delete fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         return await self._get_col_by_edge(edge).delete(
             edge=edge,
@@ -880,7 +880,7 @@ class Graph(ApiGroup):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         return await self.edge_collection(collection).link(
             from_vertex=from_vertex,
@@ -904,6 +904,6 @@ class Graph(ApiGroup):
         :type direction: str
         :return: List of edges and statistics.
         :rtype: dict
-        :raise aioarango.exceptions.EdgeListError: If retrieval fails.
+        :raise python_aioarango.exceptions.EdgeListError: If retrieval fails.
         """
         return await self.edge_collection(collection).edges(vertex, direction)

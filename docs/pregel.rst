@@ -1,7 +1,7 @@
 Pregel
 ------
 
-aioarango provides support for **Pregel**, ArangoDB module for distributed
+python_aioarango provides support for **Pregel**, ArangoDB module for distributed
 iterative graph processing. For more information, refer to `ArangoDB manual`_.
 
 .. _ArangoDB manual: https://docs.arangodb.com
@@ -10,7 +10,7 @@ iterative graph processing. For more information, refer to `ArangoDB manual`_.
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

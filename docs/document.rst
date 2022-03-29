@@ -1,7 +1,7 @@
 Documents
 ---------
 
-In aioarango, a **document** is a Python dictionary with the following
+In python_aioarango, a **document** is a Python dictionary with the following
 properties:
 
 * Is JSON serializable.
@@ -66,7 +66,7 @@ Standard documents are managed via collection API wrapper:
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()
@@ -157,7 +157,7 @@ must provide document IDs instead of keys:
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

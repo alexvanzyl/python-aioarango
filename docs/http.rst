@@ -1,20 +1,20 @@
 HTTP Clients
 ------------
 
-aioarango lets you define your own HTTP client for sending requests to
+python_aioarango lets you define your own HTTP client for sending requests to
 ArangoDB server. The default implementation uses the httpx_ library.
 
-Your HTTP client must inherit :class:`aioarango.http.HTTPClient` and implement the
+Your HTTP client must inherit :class:`python_aioarango.http.HTTPClient` and implement the
 following abstract methods:
 
-* :func:`aioarango.http.HTTPClient.create_session`
-* :func:`aioarango.http.HTTPClient.send_request`
+* :func:`python_aioarango.http.HTTPClient.create_session`
+* :func:`python_aioarango.http.HTTPClient.send_request`
 
 The **create_session** method must return a `httpx.AsyncClient`_ instance per
 connected host (coordinator). The session objects are stored in the client.
 
 The **send_request** method must use the session to send an HTTP request, and
-return a fully populated instance of :class:`aioarango.response.Response`.
+return a fully populated instance of :class:`python_aioarango.response.Response`.
 
 For example, let's say your HTTP client needs:
 
@@ -33,8 +33,8 @@ Your ``CustomHTTPClient`` class might look something like this:
     from requests import Session
     from requests.packages.urllib3.util.retry import Retry
 
-    from aioarango.response import Response
-    from aioarango.http import HTTPClient
+    from python_aioarango.response import Response
+    from python_aioarango.http import HTTPClient
 
 
     class CustomHTTPClient(HTTPClient):
@@ -73,7 +73,7 @@ Your ``CustomHTTPClient`` class might look something like this:
             )
             self._logger.debug(f'Got {response.status_code}')
 
-            # Return an instance of aioarango.response.Response.
+            # Return an instance of python_aioarango.response.Response.
             return Response(
                 method=method,
                 url=str(response.url),
@@ -87,7 +87,7 @@ Then you would inject your client as follows:
 
 .. code-block:: python
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     from my_module import CustomHTTPClient
 

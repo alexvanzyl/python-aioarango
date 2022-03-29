@@ -27,7 +27,7 @@ def get_col_name(doc: Union[str, Json]) -> str:
     :type doc: str | dict
     :return: Collection name.
     :rtype: str
-    :raise aioarango.exceptions.DocumentParseError: If document ID is missing.
+    :raise python_aioarango.exceptions.DocumentParseError: If document ID is missing.
     """
     try:
         doc_id: str = doc["_id"] if isinstance(doc, dict) else doc
@@ -44,7 +44,7 @@ def get_doc_id(doc: Union[str, Json]) -> str:
     :type doc: str | dict
     :return: Document ID.
     :rtype: str
-    :raise aioarango.exceptions.DocumentParseError: If document ID is missing.
+    :raise python_aioarango.exceptions.DocumentParseError: If document ID is missing.
     """
     try:
         doc_id: str = doc["_id"] if isinstance(doc, dict) else doc

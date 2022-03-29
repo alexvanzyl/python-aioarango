@@ -1,14 +1,14 @@
 Users and Permissions
 ---------------------
 
-aioarango provides operations for managing users and permissions. Most of
+python_aioarango provides operations for managing users and permissions. Most of
 these operations can only be performed by admin users via ``_system`` database.
 
 **Example:**
 
 .. testcode::
 
-    from aioarango import ArangoClient
+    from python_aioarango import ArangoClient
 
     # Initialize the ArangoDB client.
     client = ArangoClient()

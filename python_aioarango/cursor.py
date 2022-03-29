@@ -224,8 +224,8 @@ class Cursor:
 
         :return: Next item in current batch.
         :raise StopAsyncIteration: If the result set is depleted.
-        :raise aioarango.exceptions.CursorNextError: If batch retrieval fails.
-        :raise aioarango.exceptions.CursorStateError: If cursor ID is not set.
+        :raise python_aioarango.exceptions.CursorNextError: If batch retrieval fails.
+        :raise python_aioarango.exceptions.CursorStateError: If cursor ID is not set.
         """
         if self.empty():
             if not self.has_more():
@@ -238,11 +238,11 @@ class Cursor:
         """Pop the next item from current batch.
 
         If current batch is empty/depleted, an exception is raised. You must
-        call :func:`aioarango.cursor.Cursor.fetch` to manually fetch the next
+        call :func:`python_aioarango.cursor.Cursor.fetch` to manually fetch the next
         batch from server.
 
         :return: Next item in current batch.
-        :raise aioarango.exceptions.CursorEmptyError: If current batch is empty.
+        :raise python_aioarango.exceptions.CursorEmptyError: If current batch is empty.
         """
         if len(self._batch) == 0:
             raise CursorEmptyError("current batch is empty")
@@ -253,8 +253,8 @@ class Cursor:
 
         :return: New batch details.
         :rtype: dict
-        :raise aioarango.exceptions.CursorNextError: If batch retrieval fails.
-        :raise aioarango.exceptions.CursorStateError: If cursor ID is not set.
+        :raise python_aioarango.exceptions.CursorNextError: If batch retrieval fails.
+        :raise python_aioarango.exceptions.CursorStateError: If cursor ID is not set.
         """
         if self._id is None:
             raise CursorStateError("cursor ID not set")
@@ -276,8 +276,8 @@ class Cursor:
             if there are no cursors to close server-side (e.g. result set is
             smaller than the batch size).
         :rtype: bool | None
-        :raise aioarango.exceptions.CursorCloseError: If operation fails.
-        :raise aioarango.exceptions.CursorStateError: If cursor ID is not set.
+        :raise python_aioarango.exceptions.CursorCloseError: If operation fails.
+        :raise python_aioarango.exceptions.CursorStateError: If cursor ID is not set.
         """
         if self._id is None:
             return None
