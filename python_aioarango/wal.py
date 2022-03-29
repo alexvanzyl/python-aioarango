@@ -30,7 +30,7 @@ class WAL(ApiGroup):  # pragma: no cover
 
         :return: WAL properties.
         :rtype: dict
-        :raise aioarango.exceptions.WALPropertiesError: If retrieval fails.
+        :raise python_aioarango.exceptions.WALPropertiesError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_admin/wal/properties")
 
@@ -70,7 +70,7 @@ class WAL(ApiGroup):  # pragma: no cover
         :type throttle_limit: int
         :return: New WAL properties.
         :rtype: dict
-        :raise aioarango.exceptions.WALConfigureError: If operation fails.
+        :raise python_aioarango.exceptions.WALConfigureError: If operation fails.
         """
         data: Json = {}
         if oversized_ops is not None:
@@ -114,7 +114,7 @@ class WAL(ApiGroup):  # pragma: no cover
 
         :return: Details on currently running WAL transactions.
         :rtype: dict
-        :raise aioarango.exceptions.WALTransactionListError: If retrieval fails.
+        :raise python_aioarango.exceptions.WALTransactionListError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_admin/wal/transactions")
 
@@ -136,7 +136,7 @@ class WAL(ApiGroup):  # pragma: no cover
         :type garbage_collect: bool
         :return: True if WAL was flushed successfully.
         :rtype: bool
-        :raise aioarango.exceptions.WALFlushError: If flush operation fails.
+        :raise python_aioarango.exceptions.WALFlushError: If flush operation fails.
         """
         request = Request(
             method="put",
@@ -156,7 +156,7 @@ class WAL(ApiGroup):  # pragma: no cover
 
         :return: Ranges of tick values.
         :rtype: dict
-        :raise aioarango.exceptions.WALTickRangesError: If retrieval fails.
+        :raise python_aioarango.exceptions.WALTickRangesError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/wal/range")
 
@@ -172,7 +172,7 @@ class WAL(ApiGroup):  # pragma: no cover
 
         :return: Last tick value in the WAL.
         :rtype: dict
-        :raise aioarango.exceptions.WALLastTickError: If retrieval fails.
+        :raise python_aioarango.exceptions.WALLastTickError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/wal/lastTick")
 
@@ -239,7 +239,7 @@ class WAL(ApiGroup):  # pragma: no cover
             a string. If **deserialize** is set to True, it is deserialized and
             returned as a list of dictionaries.
         :rtype: dict
-        :raise aioarango.exceptions.WALTailError: If tail operation fails.
+        :raise python_aioarango.exceptions.WALTailError: If tail operation fails.
         """
         params: Params = {}
         if lower is not None:

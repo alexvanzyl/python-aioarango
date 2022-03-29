@@ -30,7 +30,7 @@ class ArangoClient:
         "random". Any other value defaults to round robin.
     :type host_resolver: str
     :param http_client: User-defined HTTP client.
-    :type http_client: aioarango.http.HTTPClient
+    :type http_client: python_aioarango.http.HTTPClient
     :param serializer: User-defined JSON serializer. Must be a callable
         which takes a JSON data type object as its only argument and return
         the serialized string. If not given, ``json.dumps`` is used by default.
@@ -93,7 +93,7 @@ class ArangoClient:
         :return: Client version.
         :rtype: str
         """
-        return get_distribution("aioarango").version
+        return get_distribution("python_aioarango").version
 
     async def db(
         self,
@@ -124,8 +124,8 @@ class ArangoClient:
             are ignored. This token is not refreshed automatically.
         :type superuser_token: str
         :return: Standard database API wrapper.
-        :rtype: aioarango.database.StandardDatabase
-        :raise aioarango.exceptions.ServerConnectionError: If **verify** was set
+        :rtype: python_aioarango.database.StandardDatabase
+        :raise python_aioarango.exceptions.ServerConnectionError: If **verify** was set
             to True and the connection fails.
         """
         connection: Connection

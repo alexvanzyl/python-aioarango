@@ -100,7 +100,7 @@ class Collection(ApiGroup):
         :type doc_id: str
         :return: Verified document ID.
         :rtype: str
-        :raise aioarango.exceptions.DocumentParseError: On bad collection name.
+        :raise python_aioarango.exceptions.DocumentParseError: On bad collection name.
         """
         if not doc_id.startswith(self._id_prefix):
             raise DocumentParseError(f'bad collection name in document ID "{doc_id}"')
@@ -113,7 +113,7 @@ class Collection(ApiGroup):
         :type body: dict
         :return: Document ID.
         :rtype: str
-        :raise aioarango.exceptions.DocumentParseError: On missing ID and key.
+        :raise python_aioarango.exceptions.DocumentParseError: On missing ID and key.
         """
         try:
             if "_id" in body:
@@ -179,7 +179,7 @@ class Collection(ApiGroup):
         :type body: dict
         :return: Document body with "_key" field.
         :rtype: dict
-        :raise aioarango.exceptions.DocumentParseError: On missing ID and key.
+        :raise python_aioarango.exceptions.DocumentParseError: On missing ID and key.
         """
         if "_key" in body:
             return body
@@ -218,7 +218,7 @@ class Collection(ApiGroup):
 
         :return: True if recalculation was successful.
         :rtype: bool
-        :raise aioarango.exceptions.CollectionRecalculateCountError: If operation fails.
+        :raise python_aioarango.exceptions.CollectionRecalculateCountError: If operation fails.
         """
         request = Request(
             method="put",
@@ -268,7 +268,7 @@ class Collection(ApiGroup):
         :type new_name: str
         :return: True if collection was renamed successfully.
         :rtype: bool
-        :raise aioarango.exceptions.CollectionRenameError: If rename fails.
+        :raise python_aioarango.exceptions.CollectionRenameError: If rename fails.
         """
         request = Request(
             method="put",
@@ -290,7 +290,7 @@ class Collection(ApiGroup):
 
         :return: Collection properties.
         :rtype: dict
-        :raise aioarango.exceptions.CollectionPropertiesError: If retrieval fails.
+        :raise python_aioarango.exceptions.CollectionPropertiesError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -316,7 +316,7 @@ class Collection(ApiGroup):
         :type schema: dict
         :return: New collection properties.
         :rtype: dict
-        :raise aioarango.exceptions.CollectionConfigureError: If operation fails.
+        :raise python_aioarango.exceptions.CollectionConfigureError: If operation fails.
         """
         data: Json = {}
         if sync is not None:
@@ -342,7 +342,7 @@ class Collection(ApiGroup):
 
         :return: Collection statistics.
         :rtype: dict
-        :raise aioarango.exceptions.CollectionStatisticsError: If retrieval fails.
+        :raise python_aioarango.exceptions.CollectionStatisticsError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -382,7 +382,7 @@ class Collection(ApiGroup):
 
         :return: Collection revision.
         :rtype: str
-        :raise aioarango.exceptions.CollectionRevisionError: If retrieval fails.
+        :raise python_aioarango.exceptions.CollectionRevisionError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -408,7 +408,7 @@ class Collection(ApiGroup):
         :type with_data: bool
         :return: Collection checksum.
         :rtype: str
-        :raise aioarango.exceptions.CollectionChecksumError: If retrieval fails.
+        :raise python_aioarango.exceptions.CollectionChecksumError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -428,7 +428,7 @@ class Collection(ApiGroup):
 
         :return: True if collection was loaded successfully.
         :rtype: bool
-        :raise aioarango.exceptions.CollectionLoadError: If operation fails.
+        :raise python_aioarango.exceptions.CollectionLoadError: If operation fails.
         """
         request = Request(method="put", endpoint=f"/_api/collection/{self.name}/load")
 
@@ -444,7 +444,7 @@ class Collection(ApiGroup):
 
         :return: True if collection was unloaded successfully.
         :rtype: bool
-        :raise aioarango.exceptions.CollectionUnloadError: If operation fails.
+        :raise python_aioarango.exceptions.CollectionUnloadError: If operation fails.
         """
         request = Request(method="put", endpoint=f"/_api/collection/{self.name}/unload")
 
@@ -460,7 +460,7 @@ class Collection(ApiGroup):
 
         :return: True if collection was truncated successfully.
         :rtype: bool
-        :raise aioarango.exceptions.CollectionTruncateError: If operation fails.
+        :raise python_aioarango.exceptions.CollectionTruncateError: If operation fails.
         """
         request = Request(
             method="put", endpoint=f"/_api/collection/{self.name}/truncate"
@@ -478,7 +478,7 @@ class Collection(ApiGroup):
 
         :return: Total document count.
         :rtype: int
-        :raise aioarango.exceptions.DocumentCountError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentCountError: If retrieval fails.
         """
         request = Request(method="get", endpoint=f"/_api/collection/{self.name}/count")
 
@@ -509,8 +509,8 @@ class Collection(ApiGroup):
         :type check_rev: bool
         :return: True if document exists, False otherwise.
         :rtype: bool
-        :raise aioarango.exceptions.DocumentInError: If check fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentInError: If check fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         handle, body, headers = self._prep_from_doc(document, rev, check_rev)
 
@@ -536,8 +536,8 @@ class Collection(ApiGroup):
         """Return the IDs of all documents in the collection.
 
         :return: Document ID cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raise aioarango.exceptions.DocumentIDsError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raise python_aioarango.exceptions.DocumentIDsError: If retrieval fails.
         """
         request = Request(
             method="put",
@@ -557,8 +557,8 @@ class Collection(ApiGroup):
         """Return the keys of all documents in the collection.
 
         :return: Document key cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raise aioarango.exceptions.DocumentKeysError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raise python_aioarango.exceptions.DocumentKeysError: If retrieval fails.
         """
         request = Request(
             method="put",
@@ -584,8 +584,8 @@ class Collection(ApiGroup):
         :param limit: Max number of documents returned.
         :type limit: int | None
         :return: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         assert is_none_or_int(skip), "skip must be a non-negative int"
         assert is_none_or_int(limit), "limit must be a non-negative int"
@@ -640,8 +640,8 @@ class Collection(ApiGroup):
         :param filter_type: Allowed values are "include" or "exclude".
         :type filter_type: str
         :return: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raise aioarango.exceptions.DocumentGetError: If export fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raise python_aioarango.exceptions.DocumentGetError: If export fails.
         """
         data: Json = {"count": count, "flush": flush}
         if flush_wait is not None:
@@ -680,8 +680,8 @@ class Collection(ApiGroup):
         :param limit: Max number of documents returned.
         :type limit: int | None
         :return: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         assert isinstance(filters, dict), "filters must be a dict"
         assert is_none_or_int(skip), "skip must be a non-negative int"
@@ -723,8 +723,8 @@ class Collection(ApiGroup):
         :param limit: Max number of documents returned.
         :type limit: int | None
         :returns: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raises aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raises python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         assert isinstance(latitude, Number), "latitude must be a number"
         assert isinstance(longitude, Number), "longitude must be a number"
@@ -782,8 +782,8 @@ class Collection(ApiGroup):
         :param limit: Max number of documents returned.
         :type limit: int | None
         :returns: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raises aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raises python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         assert is_none_or_int(skip), "skip must be a non-negative int"
         assert is_none_or_int(limit), "limit must be a non-negative int"
@@ -839,8 +839,8 @@ class Collection(ApiGroup):
             the given coordinate. This parameter is ignored in transactions.
         :type distance_field: str
         :returns: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raises aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raises python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         assert isinstance(latitude, Number), "latitude must be a number"
         assert isinstance(longitude, Number), "longitude must be a number"
@@ -905,8 +905,8 @@ class Collection(ApiGroup):
             prefix). This parameter is ignored in transactions.
         :type index: str | None
         :returns: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raises aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raises python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         assert isinstance(latitude1, Number), "latitude1 must be a number"
         assert isinstance(longitude1, Number), "longitude1 must be a number"
@@ -955,8 +955,8 @@ class Collection(ApiGroup):
         :param limit: Max number of documents returned.
         :type limit: int | None
         :returns: Document cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raises aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raises python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         assert is_none_or_int(limit), "limit must be a non-negative int"
 
@@ -999,7 +999,7 @@ class Collection(ApiGroup):
         :type documents: [str | dict]
         :return: Documents. Missing ones are not included.
         :rtype: [dict]
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         handles = [self._extract_id(d) if isinstance(d, dict) else d for d in documents]
 
@@ -1023,7 +1023,7 @@ class Collection(ApiGroup):
 
         :return: A random document.
         :rtype: dict
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
         """
         request = Request(
             method="put",
@@ -1049,7 +1049,7 @@ class Collection(ApiGroup):
 
         :return: Collection indexes.
         :rtype: [dict]
-        :raise aioarango.exceptions.IndexListError: If retrieval fails.
+        :raise python_aioarango.exceptions.IndexListError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -1072,7 +1072,7 @@ class Collection(ApiGroup):
         :type data: dict
         :return: New index details.
         :rtype: dict
-        :raise aioarango.exceptions.IndexCreateError: If create fails.
+        :raise python_aioarango.exceptions.IndexCreateError: If create fails.
         """
         request = Request(
             method="post",
@@ -1115,7 +1115,7 @@ class Collection(ApiGroup):
         :type in_background: bool | None
         :return: New index details.
         :rtype: dict
-        :raise aioarango.exceptions.IndexCreateError: If create fails.
+        :raise python_aioarango.exceptions.IndexCreateError: If create fails.
         """
         data: Json = {"type": "hash", "fields": fields}
 
@@ -1159,7 +1159,7 @@ class Collection(ApiGroup):
         :type in_background: bool | None
         :return: New index details.
         :rtype: dict
-        :raise aioarango.exceptions.IndexCreateError: If create fails.
+        :raise python_aioarango.exceptions.IndexCreateError: If create fails.
         """
         data: Json = {"type": "skiplist", "fields": fields}
 
@@ -1198,7 +1198,7 @@ class Collection(ApiGroup):
         :type in_background: bool | None
         :return: New index details.
         :rtype: dict
-        :raise aioarango.exceptions.IndexCreateError: If create fails.
+        :raise python_aioarango.exceptions.IndexCreateError: If create fails.
         """
         data: Json = {"type": "geo", "fields": fields}
 
@@ -1230,7 +1230,7 @@ class Collection(ApiGroup):
         :type in_background: bool | None
         :return: New index details.
         :rtype: dict
-        :raise aioarango.exceptions.IndexCreateError: If create fails.
+        :raise python_aioarango.exceptions.IndexCreateError: If create fails.
         """
         data: Json = {"type": "fulltext", "fields": fields}
 
@@ -1270,7 +1270,7 @@ class Collection(ApiGroup):
         :type in_background: bool | None
         :return: New index details.
         :rtype: dict
-        :raise aioarango.exceptions.IndexCreateError: If create fails.
+        :raise python_aioarango.exceptions.IndexCreateError: If create fails.
         """
         data: Json = {"type": "persistent", "fields": fields}
 
@@ -1304,7 +1304,7 @@ class Collection(ApiGroup):
         :type in_background: bool | None
         :return: New index details.
         :rtype: dict
-        :raise aioarango.exceptions.IndexCreateError: If create fails.
+        :raise python_aioarango.exceptions.IndexCreateError: If create fails.
         """
         data: Json = {"type": "ttl", "fields": fields, "expireAfter": expiry_time}
 
@@ -1327,7 +1327,7 @@ class Collection(ApiGroup):
         :return: True if index was deleted successfully, False if index was
             not found and **ignore_missing** was set to True.
         :rtype: bool
-        :raise aioarango.exceptions.IndexDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.IndexDeleteError: If delete fails.
         """
         request = Request(
             method="delete", endpoint=f"/_api/index/{self.name}/{index_id}"
@@ -1347,7 +1347,7 @@ class Collection(ApiGroup):
 
         :return: True if index was loaded successfully.
         :rtype: bool
-        :raise aioarango.exceptions.IndexLoadError: If operation fails.
+        :raise python_aioarango.exceptions.IndexLoadError: If operation fails.
         """
         request = Request(
             method="put",
@@ -1385,7 +1385,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single insert
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param documents: List of new documents to insert. If they contain the
@@ -1409,7 +1409,7 @@ class Collection(ApiGroup):
         :return: List of document metadata (e.g. document keys, revisions) and
             any exception, or True if parameter **silent** was set to True.
         :rtype: [dict | ArangoServerError] | bool
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         documents = [self._ensure_key_from_id(doc) for doc in documents]
 
@@ -1477,7 +1477,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single update
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param documents: Partial or full documents with the updated values.
@@ -1506,7 +1506,7 @@ class Collection(ApiGroup):
         :return: List of document metadata (e.g. document keys, revisions) and
             any exceptions, or True if parameter **silent** was set to True.
         :rtype: [dict | ArangoError] | bool
-        :raise aioarango.exceptions.DocumentUpdateError: If update fails.
+        :raise python_aioarango.exceptions.DocumentUpdateError: If update fails.
         """
         params: Params = {
             "keepNull": keep_none,
@@ -1574,7 +1574,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single update
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param filters: Document filters.
@@ -1595,7 +1595,7 @@ class Collection(ApiGroup):
         :type merge: bool | None
         :return: Number of documents updated.
         :rtype: int
-        :raise aioarango.exceptions.DocumentUpdateError: If update fails.
+        :raise python_aioarango.exceptions.DocumentUpdateError: If update fails.
         """
         data: Json = {
             "collection": self.name,
@@ -1648,7 +1648,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single replace
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param documents: New documents to replace the old ones with. They must
@@ -1672,7 +1672,7 @@ class Collection(ApiGroup):
         :return: List of document metadata (e.g. document keys, revisions) and
             any exceptions, or True if parameter **silent** was set to True.
         :rtype: [dict | ArangoServerError] | bool
-        :raise aioarango.exceptions.DocumentReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.DocumentReplaceError: If replace fails.
         """
         params: Params = {
             "returnNew": return_new,
@@ -1736,7 +1736,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single replace
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param filters: Document filters.
@@ -1750,7 +1750,7 @@ class Collection(ApiGroup):
         :type sync: bool | None
         :return: Number of documents replaced.
         :rtype: int
-        :raise aioarango.exceptions.DocumentReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.DocumentReplaceError: If replace fails.
         """
         data: Json = {"collection": self.name, "example": filters, "newValue": body}
         if limit is not None:
@@ -1796,7 +1796,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single delete
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param documents: Document IDs, keys or bodies. Document bodies must
@@ -1815,7 +1815,7 @@ class Collection(ApiGroup):
         :return: List of document metadata (e.g. document keys, revisions) and
             any exceptions, or True if parameter **silent** was set to True.
         :rtype: [dict | ArangoServerError] | bool
-        :raise aioarango.exceptions.DocumentDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.DocumentDeleteError: If delete fails.
         """
         params: Params = {
             "returnOld": return_old,
@@ -1875,7 +1875,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single delete
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param filters: Document filters.
@@ -1887,7 +1887,7 @@ class Collection(ApiGroup):
         :type sync: bool | None
         :return: Number of documents deleted.
         :rtype: int
-        :raise aioarango.exceptions.DocumentDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.DocumentDeleteError: If delete fails.
         """
         data: Json = {"collection": self.name, "example": filters}
         if sync is not None:
@@ -1926,7 +1926,7 @@ class Collection(ApiGroup):
         .. note::
 
             This method is faster than
-            :func:`aioarango.collection.Collection.insert_many`
+            :func:`python_aioarango.collection.Collection.insert_many`
             but does not return as many details.
 
         .. note::
@@ -1934,7 +1934,7 @@ class Collection(ApiGroup):
             In edge/vertex collections, this method does NOT provide the
             transactional guarantees and validations that single insert
             operation does for graphs. If these properties are required, see
-            :func:`aioarango.database.StandardDatabase.begin_batch_execution`
+            :func:`python_aioarango.database.StandardDatabase.begin_batch_execution`
             for an alternative approach.
 
         :param documents: List of new documents to insert. If they contain the
@@ -1973,7 +1973,7 @@ class Collection(ApiGroup):
         :type sync: bool | None
         :return: Result of the bulk import.
         :rtype: dict
-        :raise aioarango.exceptions.DocumentInsertError: If import fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If import fails.
         """
         documents = [self._ensure_key_from_id(doc) for doc in documents]
 
@@ -2038,8 +2038,8 @@ class StandardCollection(Collection):
         :type check_rev: bool
         :return: Document, or None if not found.
         :rtype: dict | None
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         handle, body, headers = self._prep_from_doc(document, rev, check_rev)
 
@@ -2111,7 +2111,7 @@ class StandardCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         document = self._ensure_key_from_id(document)
 
@@ -2191,8 +2191,8 @@ class StandardCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentUpdateError: If update fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentUpdateError: If update fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         params: Params = {
             "keepNull": keep_none,
@@ -2260,8 +2260,8 @@ class StandardCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentReplaceError: If replace fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         params: Params = {
             "returnNew": return_new,
@@ -2335,8 +2335,8 @@ class StandardCollection(Collection):
             found and **ignore_missing** was set to True (does not apply in
             transactions).
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentDeleteError: If delete fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         handle, body, headers = self._prep_from_doc(document, rev, check_rev)
 
@@ -2415,8 +2415,8 @@ class VertexCollection(Collection):
         :type check_rev: bool
         :return: Vertex document or None if not found.
         :rtype: dict | None
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         handle, body, headers = self._prep_from_doc(vertex, rev, check_rev)
 
@@ -2463,7 +2463,7 @@ class VertexCollection(Collection):
         :return: Document metadata (e.g. document key, revision), or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         vertex = self._ensure_key_from_id(vertex)
 
@@ -2523,8 +2523,8 @@ class VertexCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentUpdateError: If update fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentUpdateError: If update fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         vertex_id, headers = self._prep_from_body(vertex, check_rev)
 
@@ -2589,8 +2589,8 @@ class VertexCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentReplaceError: If replace fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         vertex_id, headers = self._prep_from_body(vertex, check_rev)
 
@@ -2655,8 +2655,8 @@ class VertexCollection(Collection):
             transactions). Old document is returned if **return_old** is set to
             True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentDeleteError: If delete fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         handle, _, headers = self._prep_from_doc(vertex, rev, check_rev)
 
@@ -2729,8 +2729,8 @@ class EdgeCollection(Collection):
         :type check_rev: bool
         :return: Edge document or None if not found.
         :rtype: dict | None
-        :raise aioarango.exceptions.DocumentGetError: If retrieval fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         handle, body, headers = self._prep_from_doc(edge, rev, check_rev)
 
@@ -2779,7 +2779,7 @@ class EdgeCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         edge = self._ensure_key_from_id(edge)
 
@@ -2839,8 +2839,8 @@ class EdgeCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentUpdateError: If update fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentUpdateError: If update fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         edge_id, headers = self._prep_from_body(edge, check_rev)
 
@@ -2906,8 +2906,8 @@ class EdgeCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentReplaceError: If replace fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         edge_id, headers = self._prep_from_body(edge, check_rev)
 
@@ -2971,8 +2971,8 @@ class EdgeCollection(Collection):
             found and **ignore_missing** was set to True (does not  apply in
             transactions).
         :rtype: bool
-        :raise aioarango.exceptions.DocumentDeleteError: If delete fails.
-        :raise aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
+        :raise python_aioarango.exceptions.DocumentDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.DocumentRevisionError: If revisions mismatch.
         """
         handle, _, headers = self._prep_from_doc(edge, rev, check_rev)
 
@@ -3031,7 +3031,7 @@ class EdgeCollection(Collection):
         :return: Document metadata (e.g. document key, revision) or True if
             parameter **silent** was set to True.
         :rtype: bool | dict
-        :raise aioarango.exceptions.DocumentInsertError: If insert fails.
+        :raise python_aioarango.exceptions.DocumentInsertError: If insert fails.
         """
         edge = {"_from": get_doc_id(from_vertex), "_to": get_doc_id(to_vertex)}
         if data is not None:
@@ -3050,7 +3050,7 @@ class EdgeCollection(Collection):
         :type direction: str
         :return: List of edges and statistics.
         :rtype: dict
-        :raise aioarango.exceptions.EdgeListError: If retrieval fails.
+        :raise python_aioarango.exceptions.EdgeListError: If retrieval fails.
         """
         params: Params = {"vertex": get_doc_id(vertex)}
         if direction is not None:

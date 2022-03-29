@@ -46,7 +46,7 @@ class AQLQueryCache(ApiGroup):
 
         :return: Query cache properties.
         :rtype: dict
-        :raise aioarango.exceptions.AQLCachePropertiesError: If retrieval fails.
+        :raise python_aioarango.exceptions.AQLCachePropertiesError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/query-cache/properties")
 
@@ -83,7 +83,7 @@ class AQLQueryCache(ApiGroup):
         :type include_system: bool
         :return: Query cache properties.
         :rtype: dict
-        :raise aioarango.exceptions.AQLCacheConfigureError: If operation fails.
+        :raise python_aioarango.exceptions.AQLCacheConfigureError: If operation fails.
         """
         data: Json = {}
         if mode is not None:
@@ -129,7 +129,7 @@ class AQLQueryCache(ApiGroup):
 
         :return: True if query cache was cleared successfully.
         :rtype: bool
-        :raise aioarango.exceptions.AQLCacheClearError: If operation fails.
+        :raise python_aioarango.exceptions.AQLCacheClearError: If operation fails.
         """
         request = Request(method="delete", endpoint="/_api/query-cache")
 
@@ -159,7 +159,7 @@ class AQL(ApiGroup):
         """Return the query cache API wrapper.
 
         :return: Query cache API wrapper.
-        :rtype: aioarango.aql.AQLQueryCache
+        :rtype: python_aioarango.aql.AQLQueryCache
         """
         return AQLQueryCache(self._conn, self._executor)
 
@@ -187,7 +187,7 @@ class AQL(ApiGroup):
         :type bind_vars: dict
         :return: Execution plan, or plans if **all_plans** was set to True.
         :rtype: dict | list
-        :raise aioarango.exceptions.AQLQueryExplainError: If explain fails.
+        :raise python_aioarango.exceptions.AQLQueryExplainError: If explain fails.
         """
         options: Json = {"allPlans": all_plans}
         if max_plans is not None:
@@ -224,7 +224,7 @@ class AQL(ApiGroup):
         :type query: str
         :return: Query details.
         :rtype: dict
-        :raise aioarango.exceptions.AQLQueryValidateError: If validation fails.
+        :raise python_aioarango.exceptions.AQLQueryValidateError: If validation fails.
         """
         request = Request(method="post", endpoint="/_api/query", data={"query": query})
 
@@ -344,8 +344,8 @@ class AQL(ApiGroup):
             is 0.0 (no timeout).
         :type max_runtime: int | float
         :return: Result cursor.
-        :rtype: aioarango.cursor.Cursor
-        :raise aioarango.exceptions.AQLQueryExecuteError: If execute fails.
+        :rtype: python_aioarango.cursor.Cursor
+        :raise python_aioarango.exceptions.AQLQueryExecuteError: If execute fails.
         """
         data: Json = {"query": query, "count": count}
         if batch_size is not None:
@@ -407,7 +407,7 @@ class AQL(ApiGroup):
         :type query_id: str
         :return: True if kill request was sent successfully.
         :rtype: bool
-        :raise aioarango.exceptions.AQLQueryKillError: If the send fails.
+        :raise python_aioarango.exceptions.AQLQueryKillError: If the send fails.
         """
         request = Request(method="delete", endpoint=f"/_api/query/{query_id}")
 
@@ -423,7 +423,7 @@ class AQL(ApiGroup):
 
         :return: Running AQL queries.
         :rtype: [dict]
-        :raise aioarango.exceptions.AQLQueryListError: If retrieval fails.
+        :raise python_aioarango.exceptions.AQLQueryListError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/query/current")
 
@@ -439,7 +439,7 @@ class AQL(ApiGroup):
 
         :return: Slow AQL queries.
         :rtype: [dict]
-        :raise aioarango.exceptions.AQLQueryListError: If retrieval fails.
+        :raise python_aioarango.exceptions.AQLQueryListError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/query/slow")
 
@@ -455,7 +455,7 @@ class AQL(ApiGroup):
 
         :return: True if slow queries were cleared successfully.
         :rtype: bool
-        :raise aioarango.exceptions.AQLQueryClearError: If operation fails.
+        :raise python_aioarango.exceptions.AQLQueryClearError: If operation fails.
         """
         request = Request(method="delete", endpoint="/_api/query/slow")
 
@@ -471,7 +471,7 @@ class AQL(ApiGroup):
 
         :return: AQL query tracking properties.
         :rtype: dict
-        :raise aioarango.exceptions.AQLQueryTrackingGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.AQLQueryTrackingGetError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/query/properties")
 
@@ -511,7 +511,7 @@ class AQL(ApiGroup):
         :type track_slow_queries: bool
         :return: Updated AQL query tracking properties.
         :rtype: dict
-        :raise aioarango.exceptions.AQLQueryTrackingSetError: If operation fails.
+        :raise python_aioarango.exceptions.AQLQueryTrackingSetError: If operation fails.
         """
         data: Json = {}
         if enabled is not None:
@@ -541,7 +541,7 @@ class AQL(ApiGroup):
 
         :return: AQL functions.
         :rtype: [dict]
-        :raise aioarango.exceptions.AQLFunctionListError: If retrieval fails.
+        :raise python_aioarango.exceptions.AQLFunctionListError: If retrieval fails.
         """
         request = Request(method="get", endpoint="/_api/aqlfunction")
 
@@ -568,7 +568,7 @@ class AQL(ApiGroup):
         :return: Whether the AQL function was newly created or an existing one
             was replaced.
         :rtype: dict
-        :raise aioarango.exceptions.AQLFunctionCreateError: If create fails.
+        :raise python_aioarango.exceptions.AQLFunctionCreateError: If create fails.
         """
         request = Request(
             method="post",
@@ -601,7 +601,7 @@ class AQL(ApiGroup):
             False if function(s) was not found and **ignore_missing** was set
             to True.
         :rtype: dict | bool
-        :raise aioarango.exceptions.AQLFunctionDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.AQLFunctionDeleteError: If delete fails.
         """
         request = Request(
             method="delete",

@@ -84,7 +84,7 @@ class Foxx(ApiGroup):
         :type exclude_system: bool
         :return: List of installed service.
         :rtype: [dict]
-        :raise aioarango.exceptions.FoxxServiceListError: If retrieval fails.
+        :raise python_aioarango.exceptions.FoxxServiceListError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -106,7 +106,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxServiceGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.FoxxServiceGetError: If retrieval fails.
         """
         request = Request(
             method="get", endpoint="/_api/foxx/service", params={"mount": mount}
@@ -149,7 +149,7 @@ class Foxx(ApiGroup):
         :type legacy: bool | None
         :return: Service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxServiceCreateError: If install fails.
+        :raise python_aioarango.exceptions.FoxxServiceCreateError: If install fails.
         """
         params: Params = {"mount": mount}
         if development is not None:
@@ -207,7 +207,7 @@ class Foxx(ApiGroup):
         :type dependencies: dict | None
         :return: Service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxServiceCreateError: If install fails.
+        :raise python_aioarango.exceptions.FoxxServiceCreateError: If install fails.
         """
         params: Params = {"mount": mount}
         if development is not None:
@@ -266,7 +266,7 @@ class Foxx(ApiGroup):
         :type force: bool | None
         :return: Updated service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxServiceUpdateError: If update fails.
+        :raise python_aioarango.exceptions.FoxxServiceUpdateError: If update fails.
         """
         params: Params = {"mount": mount}
         if teardown is not None:
@@ -331,7 +331,7 @@ class Foxx(ApiGroup):
         :type dependencies: dict | None
         :return: Updated service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxServiceUpdateError: If update fails.
+        :raise python_aioarango.exceptions.FoxxServiceUpdateError: If update fails.
         """
         params: Params = {"mount": mount}
         if teardown is not None:
@@ -392,7 +392,7 @@ class Foxx(ApiGroup):
         :type force: bool | None
         :return: Replaced service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxServiceReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.FoxxServiceReplaceError: If replace fails.
         """
         params: Params = {"mount": mount}
         if teardown is not None:
@@ -457,7 +457,7 @@ class Foxx(ApiGroup):
         :type dependencies: dict | None
         :return: Replaced service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxServiceReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.FoxxServiceReplaceError: If replace fails.
         """
         params: Params = {"mount": mount}
         if teardown is not None:
@@ -496,7 +496,7 @@ class Foxx(ApiGroup):
         :type teardown: bool | None
         :return: True if service was deleted successfully.
         :rtype: bool
-        :raise aioarango.exceptions.FoxxServiceDeleteError: If delete fails.
+        :raise python_aioarango.exceptions.FoxxServiceDeleteError: If delete fails.
         """
         params: Params = {"mount": mount}
         if teardown is not None:
@@ -518,7 +518,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Configuration values.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxConfigGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.FoxxConfigGetError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -542,7 +542,7 @@ class Foxx(ApiGroup):
         :type config: dict
         :return: Updated configuration values.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxConfigUpdateError: If update fails.
+        :raise python_aioarango.exceptions.FoxxConfigUpdateError: If update fails.
         """
         request = Request(
             method="patch",
@@ -568,7 +568,7 @@ class Foxx(ApiGroup):
         :type config: dict
         :return: Replaced configuration values.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxConfigReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.FoxxConfigReplaceError: If replace fails.
         """
         request = Request(
             method="put",
@@ -591,7 +591,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Dependency settings.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxDependencyGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.FoxxDependencyGetError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -615,7 +615,7 @@ class Foxx(ApiGroup):
         :type dependencies: dict
         :return: Updated dependency settings.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxDependencyUpdateError: If update fails.
+        :raise python_aioarango.exceptions.FoxxDependencyUpdateError: If update fails.
         """
         request = Request(
             method="patch",
@@ -642,7 +642,7 @@ class Foxx(ApiGroup):
         :type dependencies: dict
         :return: Replaced dependency settings.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxDependencyReplaceError: If replace fails.
+        :raise python_aioarango.exceptions.FoxxDependencyReplaceError: If replace fails.
         """
         request = Request(
             method="put",
@@ -672,7 +672,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxDevModeEnableError: If operation fails.
+        :raise python_aioarango.exceptions.FoxxDevModeEnableError: If operation fails.
         """
         request = Request(
             method="post",
@@ -697,7 +697,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Service metadata.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxDevModeDisableError: If operation fails.
+        :raise python_aioarango.exceptions.FoxxDevModeDisableError: If operation fails.
         """
         request = Request(
             method="delete",
@@ -719,7 +719,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Service readme.
         :rtype: str
-        :raise aioarango.exceptions.FoxxReadmeGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.FoxxReadmeGetError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -741,7 +741,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Swagger API description.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxSwaggerGetError: If retrieval fails.
+        :raise python_aioarango.exceptions.FoxxSwaggerGetError: If retrieval fails.
         """
         request = Request(
             method="get", endpoint="/_api/foxx/swagger", params={"mount": mount}
@@ -769,7 +769,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Service bundle in raw string form.
         :rtype: str
-        :raise aioarango.exceptions.FoxxDownloadError: If download fails.
+        :raise python_aioarango.exceptions.FoxxDownloadError: If download fails.
         """
         request = Request(
             method="post", endpoint="/_api/foxx/download", params={"mount": mount}
@@ -792,7 +792,7 @@ class Foxx(ApiGroup):
         :type replace: bool | None
         :return: True if the state was committed successfully.
         :rtype: bool
-        :raise aioarango.exceptions.FoxxCommitError: If commit fails.
+        :raise python_aioarango.exceptions.FoxxCommitError: If commit fails.
         """
         params: Params = {}
         if replace is not None:
@@ -814,7 +814,7 @@ class Foxx(ApiGroup):
         :type mount: str
         :return: Service scripts.
         :rtype: dict
-        :raise aioarango.exceptions.FoxxScriptListError: If retrieval fails.
+        :raise python_aioarango.exceptions.FoxxScriptListError: If retrieval fails.
         """
         request = Request(
             method="get",
@@ -840,7 +840,7 @@ class Foxx(ApiGroup):
         :type arg: Any
         :return: Result of the script, if any.
         :rtype: Any
-        :raise aioarango.exceptions.FoxxScriptRunError: If script fails.
+        :raise python_aioarango.exceptions.FoxxScriptRunError: If script fails.
         """
         request = Request(
             method="post",
@@ -888,7 +888,7 @@ class Foxx(ApiGroup):
         :type name_filter: str
         :return: Reporter output (e.g. raw JSON string, XML, plain text).
         :rtype: str
-        :raise aioarango.exceptions.FoxxTestRunError: If test fails.
+        :raise python_aioarango.exceptions.FoxxTestRunError: If test fails.
         """
         params: Params = {"mount": mount, "reporter": reporter}
         if idiomatic is not None:

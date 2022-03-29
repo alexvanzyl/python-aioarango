@@ -52,7 +52,7 @@ class AsyncJob(Generic[T]):
     async def status(self):
         """Return the async job status from server.
 
-        Once a job result is retrieved via func:`aioarango.job.AsyncJob.result`
+        Once a job result is retrieved via func:`python_aioarango.job.AsyncJob.result`
         method, it is deleted from server and subsequent status queries will
         fail.
 
@@ -60,7 +60,7 @@ class AsyncJob(Generic[T]):
             in queue), "done" (job finished or raised an error), or "cancelled"
             (job was cancelled before completion).
         :rtype: str
-        :raise aioarango.exceptions.AsyncJobStatusError: If retrieval fails.
+        :raise python_aioarango.exceptions.AsyncJobStatusError: If retrieval fails.
         """
         request = Request(method="get", endpoint=f"/_api/job/{self._id}")
         resp = await self._conn.send_request(request)
@@ -84,8 +84,8 @@ class AsyncJob(Generic[T]):
         queries for result will fail.
 
         :return: Async job result.
-        :raise aioarango.exceptions.ArangoError: If the job raised an exception.
-        :raise aioarango.exceptions.AsyncJobResultError: If retrieval fails.
+        :raise python_aioarango.exceptions.ArangoError: If the job raised an exception.
+        :raise python_aioarango.exceptions.AsyncJobResultError: If retrieval fails.
         """
         request = Request(method="put", endpoint=f"/_api/job/{self._id}")
         resp = await self._conn.send_request(request)
@@ -112,7 +112,7 @@ class AsyncJob(Generic[T]):
         :return: True if job was cancelled successfully, False if the job
             was not found but **ignore_missing** was set to True.
         :rtype: bool
-        :raise aioarango.exceptions.AsyncJobCancelError: If cancel fails.
+        :raise python_aioarango.exceptions.AsyncJobCancelError: If cancel fails.
         """
         request = Request(method="put", endpoint=f"/_api/job/{self._id}/cancel")
         resp = await self._conn.send_request(request)
@@ -135,7 +135,7 @@ class AsyncJob(Generic[T]):
         :return: True if result was deleted successfully, False if the job
             was not found but **ignore_missing** was set to True.
         :rtype: bool
-        :raise aioarango.exceptions.AsyncJobClearError: If delete fails.
+        :raise python_aioarango.exceptions.AsyncJobClearError: If delete fails.
         """
         request = Request(method="delete", endpoint=f"/_api/job/{self._id}")
         resp = await self._conn.send_request(request)
@@ -194,8 +194,8 @@ class BatchJob(Generic[T]):
         If the job raised an exception, it is propagated up at this point.
 
         :return: Batch job result.
-        :raise aioarango.exceptions.ArangoError: If the job raised an exception.
-        :raise aioarango.exceptions.BatchJobResultError: If job result is not
+        :raise python_aioarango.exceptions.ArangoError: If the job raised an exception.
+        :raise python_aioarango.exceptions.BatchJobResultError: If job result is not
             available (i.e. batch is not committed yet).
         """
         if self._status == "pending" or self._response is None:
