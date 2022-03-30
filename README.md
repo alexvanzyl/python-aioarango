@@ -1,3 +1,5 @@
+![python-aioarango](https://user-images.githubusercontent.com/2052390/160789178-9926537e-8660-4398-8461-fc1a9f008654.png)
+
 [![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/alexvanzyl/python-aioarango/blob/main/LICENSE)
 ![Python version](https://img.shields.io/badge/python-3.7%2B-blue)
 
